@@ -1,1 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charleston Polo Club</title>
 
+  <style>
+    body {
+      margin: 0;
+      background: #172846;
+      color: #d9a21b;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: 0.12em;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 28px 7%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .logo {
+      width: 48px;
+    }
+
+    nav a {
+      color: #d9a21b;
+      text-decoration: none;
+      margin-left: 26px;
+      font-size: 16px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(10,18,32,.25), rgba(10,18,32,.25)),
+        url("hero.jpg") center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      margin-top: 70px;
+      text-shadow: 0 2px 8px rgba(0,0,0,.55);
+    }
+
+    .hero-crest {
+      width: 260px;
+      max-width: 45vw;
+      margin-bottom: 22px;
+    }
+
+    .quote {
+      font-size: 28px;
+      line-height: 1.35;
+      font-style: italic;
+      color: #d9a21b;
+      letter-spacing: 0.02em;
+    }
+
+    .section {
+      background: #172846;
+      padding: 70px 20px 90px;
+      text-align: center;
+    }
+
+    .section-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-weight: normal;
+      font-size: 34px;
+      margin-bottom: 42px;
+      color: #d9a21b;
+    }
+
+    ul {
+      text-align: left;
+      line-height: 2.1;
+      font-size: 19px;
+      margin: 0 auto 55px;
+      max-width: 680px;
+    }
+
+    li {
+      margin-bottom: 18px;
+    }
+
+    .bold-copy {
+      font-weight: bold;
+      font-size: 19px;
+      line-height: 2.1;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 20px;
+      }
+
+      nav a {
+        margin-left: 12px;
+        font-size: 13px;
+      }
+
+      .hero-crest {
+        width: 190px;
+      }
+
+      .quote {
+        font-size: 22px;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+
+      ul, .bold-copy {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="crest.png" class="logo" alt="Charleston Polo Club Crest" />
+
+    <nav>
+      <a href="#">Founding Patrons</a>
+      <a href="#">Inquire</a>
+      <a href="#">Shop</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <img src="crest.png" class="hero-crest" alt="Charleston Polo Club Crest" />
+      <div class="quote">
+        “Let others play at other things<br>
+        The King of Games is still the<br>
+        Game of Kings”
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <h1>CHARLESTON POLO CLUB</h1>
+
+      <ul>
+        <li>Beginner Instruction - Embark on your polo journey with our polo schooling sessions.</li>
+        <li>Hire our Equine Companions for Practice Chukkers and Games</li>
+        <li>CPC Coached League - claim your number in our coached league this season and enjoy the King of Games.</li>
+      </ul>
+
+      <p class="bold-copy">
+        Participation necessitates no previous experience and includes all necessary equipment and gear, along with an experienced horse for your learning journey.
+      </p>
+    </div>
+  </section>
+
+</body>
+</html>
