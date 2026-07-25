@@ -25,31 +25,19 @@
 
   <style>
     :root {
-      --navy: #152743;
-      --navy-deep: #091524;
-      --navy-dark: #101f35;
-      --navy-soft: #1d3556;
-
-      --gold: #c99a32;
-      --gold-bright: #e4bd65;
-      --gold-pale: #ecd49b;
-      --gold-muted: #9f7929;
-
-      --ivory: #f3ebda;
-      --ivory-muted: #d8ceb9;
-      --ink: #0a1422;
-
-      --border-gold: rgba(214, 169, 73, 0.44);
-      --border-soft: rgba(239, 216, 165, 0.16);
-
-      --shadow-deep:
-        0 30px 80px rgba(0, 0, 0, 0.34);
-
-      --text-shadow:
-        0 2px 10px rgba(0, 0, 0, 0.88),
-        0 8px 28px rgba(0, 0, 0, 0.55);
-
-      --page-width: 1180px;
+      --blue: #18345d;
+      --blue-deep: #0d2342;
+      --blue-dark: #09192f;
+      --blue-soft: #244a7a;
+      --blue-pale: #dbe7f3;
+      --blue-muted: #afc4d9;
+      --white: #f7f9fc;
+      --line: rgba(219, 231, 243, 0.3);
+      --line-soft: rgba(219, 231, 243, 0.14);
+      --shadow:
+        0 2px 12px rgba(0, 0, 0, 0.7),
+        0 12px 36px rgba(0, 0, 0, 0.42);
+      --page-width: 1120px;
       --copy-width: 760px;
     }
 
@@ -59,33 +47,24 @@
 
     html {
       scroll-behavior: smooth;
-      background: var(--navy-deep);
+      background: var(--blue-dark);
     }
 
     body {
       margin: 0;
       overflow-x: hidden;
-
-      background:
-        linear-gradient(
-          180deg,
-          var(--navy-deep) 0%,
-          var(--navy) 28%,
-          var(--navy-dark) 100%
-        );
-
-      color: var(--ivory);
+      background: var(--blue-deep);
+      color: var(--blue-pale);
       font-family:
         "Cormorant Garamond",
         Garamond,
         Georgia,
         "Times New Roman",
         serif;
-
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 400;
       letter-spacing: 0.015em;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     img {
@@ -97,16 +76,9 @@
       color: inherit;
     }
 
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-    }
-
     ::selection {
-      background: var(--gold);
-      color: var(--navy-deep);
+      background: var(--blue-pale);
+      color: var(--blue-deep);
     }
 
     /* ---------------------------------
@@ -123,8 +95,8 @@
       display: flex;
       width: 100%;
       padding:
-        max(25px, env(safe-area-inset-top))
-        clamp(22px, 6vw, 92px)
+        max(24px, env(safe-area-inset-top))
+        clamp(20px, 6vw, 90px)
         42px;
 
       align-items: center;
@@ -133,9 +105,9 @@
       background:
         linear-gradient(
           180deg,
-          rgba(5, 12, 22, 0.85) 0%,
-          rgba(5, 12, 22, 0.48) 50%,
-          rgba(5, 12, 22, 0) 100%
+          rgba(5, 15, 30, 0.82) 0%,
+          rgba(5, 15, 30, 0.42) 54%,
+          transparent 100%
         );
     }
 
@@ -144,28 +116,30 @@
       min-width: 0;
       align-items: center;
       gap: 16px;
+      color: var(--white);
       text-decoration: none;
     }
 
     .logo {
-      width: clamp(43px, 4vw, 58px);
+      width: clamp(42px, 4vw, 58px);
       height: auto;
       flex: 0 0 auto;
-
       filter:
-        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.72));
+        grayscale(1)
+        brightness(2.1)
+        contrast(0.72)
+        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.64));
     }
 
     .header-wordmark {
       display: flex;
       min-width: 0;
       flex-direction: column;
-      color: var(--gold-pale);
-      text-shadow: var(--text-shadow);
+      text-shadow: var(--shadow);
     }
 
     .header-wordmark-main {
-      font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+      font-size: clamp(0.95rem, 1.5vw, 1.22rem);
       font-weight: 500;
       letter-spacing: 0.17em;
       line-height: 1;
@@ -174,12 +148,11 @@
     }
 
     .header-wordmark-sub {
-      margin-top: 5px;
-
-      color: rgba(243, 235, 218, 0.78);
-      font-size: 0.68rem;
+      margin-top: 6px;
+      color: var(--blue-pale);
+      font-size: 0.67rem;
       font-style: italic;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
       line-height: 1;
       text-transform: uppercase;
     }
@@ -188,19 +161,19 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: clamp(18px, 2.8vw, 38px);
+      gap: clamp(18px, 2.8vw, 40px);
     }
 
     .site-nav a {
       position: relative;
-
-      color: var(--gold-pale);
-      font-size: clamp(0.78rem, 1.05vw, 0.98rem);
+      color: var(--white);
+      font-size: clamp(0.74rem, 1vw, 0.94rem);
       font-weight: 500;
-      letter-spacing: 0.11em;
+      letter-spacing: 0.15em;
       line-height: 1.2;
       text-decoration: none;
-      text-shadow: var(--text-shadow);
+      text-shadow: var(--shadow);
+      text-transform: uppercase;
       white-space: nowrap;
     }
 
@@ -209,21 +182,17 @@
       right: 0;
       bottom: -8px;
       left: 0;
-
       height: 1px;
-
       background:
         linear-gradient(
           90deg,
           transparent,
-          var(--gold-bright),
+          var(--blue-pale),
           transparent
         );
-
       content: "";
       opacity: 0;
       transform: scaleX(0.25);
-
       transition:
         opacity 180ms ease,
         transform 180ms ease;
@@ -243,18 +212,14 @@
       position: relative;
       width: 100%;
       overflow: hidden;
-
-      background: var(--navy-deep);
-      border-bottom: 1px solid var(--border-gold);
-
+      background: var(--blue-dark);
+      border-bottom: 1px solid var(--line);
       isolation: isolate;
     }
 
     /*
-      The landscape image determines the height of the hero.
-
-      It remains completely visible at every screen width:
-      no cropping, no forced viewport height, no object-fit cover.
+      The full landscape image remains visible at every width.
+      The image itself determines the hero height.
     */
 
     .hero-image {
@@ -268,23 +233,21 @@
       position: absolute;
       z-index: 1;
       inset: 0;
-
       background:
         linear-gradient(
           180deg,
-          rgba(4, 10, 19, 0.28) 0%,
-          rgba(4, 10, 19, 0.02) 34%,
-          rgba(4, 10, 19, 0.08) 57%,
-          rgba(4, 10, 19, 0.68) 100%
+          rgba(4, 13, 27, 0.28) 0%,
+          rgba(4, 13, 27, 0.01) 36%,
+          rgba(4, 13, 27, 0.04) 66%,
+          rgba(4, 13, 27, 0.32) 100%
         ),
         linear-gradient(
           90deg,
-          rgba(5, 12, 23, 0.18) 0%,
-          transparent 28%,
-          transparent 72%,
-          rgba(5, 12, 23, 0.16) 100%
+          rgba(8, 24, 45, 0.14) 0%,
+          transparent 30%,
+          transparent 70%,
+          rgba(8, 24, 45, 0.14) 100%
         );
-
       pointer-events: none;
     }
 
@@ -292,109 +255,32 @@
       position: absolute;
       z-index: 2;
       inset: 0;
-
       box-shadow:
-        inset 0 0 150px rgba(3, 8, 16, 0.34);
-
+        inset 0 0 150px rgba(3, 10, 21, 0.26);
       pointer-events: none;
     }
 
-    .hero-content {
-      position: absolute;
-      z-index: 3;
-      right: 0;
-      bottom: clamp(15px, 4.8vw, 72px);
-      left: 0;
-
-      display: flex;
-      width: min(92%, 900px);
-      margin: 0 auto;
-      padding: 0 clamp(14px, 4vw, 44px);
-
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-
-      text-align: center;
-    }
-
-    .hero-kicker {
-      margin: 0 0 clamp(8px, 1.4vw, 15px);
-
-      color: var(--gold-pale);
-      font-size: clamp(0.62rem, 1vw, 0.8rem);
-      font-weight: 500;
-      letter-spacing: 0.31em;
-      line-height: 1.2;
-      text-shadow: var(--text-shadow);
-      text-transform: uppercase;
-    }
-
-    .hero-rule {
-      width: clamp(78px, 12vw, 140px);
-      height: 1px;
-      margin-bottom: clamp(11px, 1.8vw, 20px);
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--gold-bright),
-          transparent
-        );
-
-      box-shadow:
-        0 0 14px rgba(225, 182, 92, 0.28);
-    }
-
-    .quote {
-      margin: 0;
-
-      color: var(--gold-pale);
-      font-size: clamp(1.1rem, 2.4vw, 2.05rem);
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: 0.015em;
-      line-height: 1.25;
-      text-shadow: var(--text-shadow);
-    }
-
-    .quote-line {
-      display: block;
-    }
-
-    .quote-attribution {
-      margin-top: clamp(7px, 1.5vw, 14px);
-
-      color: rgba(243, 235, 218, 0.8);
-      font-size: clamp(0.58rem, 0.9vw, 0.75rem);
-      font-style: normal;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-    }
-
     /* ---------------------------------
-       Introductory title
+       Main introduction
     --------------------------------- */
 
     .intro {
       position: relative;
       padding:
-        clamp(72px, 9vw, 122px)
+        clamp(76px, 10vw, 132px)
         clamp(22px, 5vw, 64px)
-        clamp(62px, 8vw, 98px);
+        clamp(70px, 9vw, 112px);
 
       background:
         radial-gradient(
           ellipse at 50% 0%,
-          rgba(235, 201, 128, 0.08) 0%,
-          transparent 45%
+          rgba(219, 231, 243, 0.08) 0%,
+          transparent 44%
         ),
         linear-gradient(
           180deg,
-          #162946 0%,
-          var(--navy) 100%
+          var(--blue) 0%,
+          var(--blue-deep) 100%
         );
 
       text-align: center;
@@ -405,17 +291,14 @@
       top: 0;
       right: 8%;
       left: 8%;
-
       height: 1px;
-
       background:
         linear-gradient(
           90deg,
           transparent,
-          rgba(224, 182, 93, 0.72),
+          rgba(219, 231, 243, 0.55),
           transparent
         );
-
       content: "";
     }
 
@@ -426,47 +309,43 @@
 
     .section-kicker {
       margin: 0 0 18px;
-
-      color: var(--gold);
-      font-size: clamp(0.68rem, 1.1vw, 0.82rem);
+      color: var(--blue-muted);
+      font-size: clamp(0.66rem, 1vw, 0.8rem);
       font-weight: 600;
-      letter-spacing: 0.31em;
+      letter-spacing: 0.33em;
       line-height: 1.2;
       text-transform: uppercase;
     }
 
     .section-title {
       margin: 0;
-
-      color: var(--gold-pale);
-      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--white);
+      font-size: clamp(2.15rem, 5vw, 4.2rem);
       font-weight: 400;
-      letter-spacing: 0.105em;
+      letter-spacing: 0.1em;
       line-height: 0.98;
       text-transform: uppercase;
     }
 
     .section-flourish {
       display: flex;
-      width: min(100%, 330px);
-      margin: clamp(28px, 4vw, 40px) auto 0;
+      width: min(100%, 340px);
+      margin: clamp(30px, 4vw, 44px) auto;
       align-items: center;
       justify-content: center;
-      gap: 15px;
+      gap: 16px;
     }
 
     .section-flourish::before,
     .section-flourish::after {
       height: 1px;
       flex: 1;
-
       background:
         linear-gradient(
           90deg,
           transparent,
-          var(--gold-muted)
+          var(--blue-muted)
         );
-
       content: "";
     }
 
@@ -474,7 +353,7 @@
       background:
         linear-gradient(
           90deg,
-          var(--gold-muted),
+          var(--blue-muted),
           transparent
         );
     }
@@ -482,198 +361,138 @@
     .section-flourish-mark {
       width: 7px;
       height: 7px;
-
-      border: 1px solid var(--gold);
+      border: 1px solid var(--blue-pale);
       transform: rotate(45deg);
+    }
+
+    .quote {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--white);
+      font-size: clamp(1.5rem, 3vw, 2.35rem);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.3;
+    }
+
+    .quote-line {
+      display: block;
+    }
+
+    .quote-attribution {
+      display: block;
+      margin-top: 18px;
+      color: var(--blue-muted);
+      font-size: 0.72rem;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
     }
 
     .intro-copy {
       max-width: 650px;
-      margin: clamp(30px, 4vw, 44px) auto 0;
-
-      color: var(--ivory-muted);
-      font-size: clamp(1.15rem, 2vw, 1.42rem);
-      font-style: italic;
-      letter-spacing: 0.015em;
-      line-height: 1.55;
+      margin: clamp(34px, 5vw, 52px) auto 0;
+      color: var(--blue-pale);
+      font-size: clamp(1.12rem, 2vw, 1.38rem);
+      line-height: 1.62;
     }
 
     /* ---------------------------------
-       Offerings
+       Club offerings
     --------------------------------- */
 
     .offerings {
       position: relative;
       padding:
-        clamp(34px, 5vw, 60px)
+        clamp(74px, 9vw, 116px)
         clamp(22px, 5vw, 64px)
-        clamp(92px, 10vw, 138px);
+        clamp(90px, 11vw, 142px);
 
       background:
         linear-gradient(
           180deg,
-          var(--navy) 0%,
-          #102039 100%
+          var(--blue-deep) 0%,
+          #0a1d37 100%
         );
     }
 
     .offerings-inner {
-      width: min(100%, var(--page-width));
+      width: min(100%, 900px);
       margin: 0 auto;
     }
 
-    .services {
-      display: grid;
+    .offering-list {
       margin: 0;
       padding: 0;
-
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(18px, 3vw, 34px);
-
       list-style: none;
+      border-top: 1px solid var(--line);
     }
 
-    .service-card {
-      position: relative;
-      min-height: 330px;
+    .offering-item {
+      display: grid;
       padding:
-        clamp(34px, 4vw, 52px)
-        clamp(25px, 3.4vw, 42px)
-        clamp(32px, 4vw, 46px);
+        clamp(28px, 5vw, 48px)
+        0;
 
-      overflow: hidden;
+      grid-template-columns: 70px minmax(0, 1fr);
+      gap: clamp(18px, 4vw, 42px);
+      align-items: start;
 
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255, 255, 255, 0.045) 0%,
-          rgba(255, 255, 255, 0.012) 55%,
-          rgba(0, 0, 0, 0.13) 100%
-        );
-
-      border: 1px solid var(--border-soft);
-
-      box-shadow:
-        0 20px 50px rgba(2, 8, 17, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.025);
-
-      transition:
-        border-color 200ms ease,
-        transform 200ms ease,
-        box-shadow 200ms ease;
+      border-bottom: 1px solid var(--line);
     }
 
-    .service-card::before {
-      position: absolute;
-      top: 0;
-      left: 50%;
-
-      width: 60%;
-      height: 1px;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--gold),
-          transparent
-        );
-
-      content: "";
-      opacity: 0.72;
-      transform: translateX(-50%);
-    }
-
-    .service-card::after {
-      position: absolute;
-      right: -55px;
-      bottom: -55px;
-
-      width: 140px;
-      height: 140px;
-
-      border: 1px solid rgba(217, 169, 69, 0.12);
-      border-radius: 50%;
-
-      content: "";
-    }
-
-    .service-card:hover {
-      border-color: rgba(218, 174, 78, 0.38);
-
-      box-shadow:
-        0 26px 62px rgba(2, 8, 17, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.035);
-
-      transform: translateY(-4px);
-    }
-
-    .service-number {
-      display: block;
-      margin-bottom: 28px;
-
-      color: var(--gold);
-      font-size: 0.75rem;
+    .offering-number {
+      padding-top: 5px;
+      color: var(--blue-muted);
+      font-size: 0.74rem;
       font-weight: 600;
-      letter-spacing: 0.24em;
-      line-height: 1;
+      letter-spacing: 0.22em;
     }
 
-    .service-title {
-      margin: 0 0 23px;
-
-      color: var(--gold-pale);
-      font-size: clamp(1.45rem, 2.5vw, 2rem);
+    .offering-title {
+      margin: 0 0 12px;
+      color: var(--white);
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
       font-weight: 400;
-      letter-spacing: 0.045em;
-      line-height: 1.05;
+      letter-spacing: 0.035em;
+      line-height: 1.08;
     }
 
-    .service-copy {
+    .offering-copy {
+      max-width: 680px;
       margin: 0;
-
-      color: var(--ivory-muted);
-      font-size: clamp(1.04rem, 1.5vw, 1.18rem);
-      letter-spacing: 0.01em;
-      line-height: 1.62;
+      color: var(--blue-pale);
+      font-size: clamp(1.04rem, 1.7vw, 1.2rem);
+      line-height: 1.65;
     }
 
     .participation {
-      width: min(100%, 820px);
-      margin: clamp(58px, 8vw, 94px) auto 0;
+      width: min(100%, 780px);
+      margin: clamp(62px, 8vw, 98px) auto 0;
       padding:
-        clamp(30px, 5vw, 50px)
-        clamp(24px, 6vw, 70px);
+        clamp(28px, 5vw, 46px)
+        clamp(22px, 6vw, 66px);
 
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(216, 173, 81, 0.05),
-          transparent
-        );
-
-      border-top: 1px solid var(--border-gold);
-      border-bottom: 1px solid var(--border-gold);
-
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
       text-align: center;
     }
 
     .participation-kicker {
-      margin: 0 0 15px;
-
-      color: var(--gold);
-      font-size: 0.7rem;
+      margin: 0 0 13px;
+      color: var(--blue-muted);
+      font-size: 0.68rem;
       font-weight: 600;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
     }
 
     .participation-copy {
       margin: 0;
-
-      color: var(--gold-pale);
-      font-size: clamp(1.2rem, 2.3vw, 1.65rem);
+      color: var(--white);
+      font-size: clamp(1.18rem, 2.3vw, 1.62rem);
       font-style: italic;
       line-height: 1.5;
     }
@@ -685,21 +504,19 @@
     .inquiry {
       position: relative;
       padding:
-        clamp(86px, 11vw, 150px)
+        clamp(88px, 11vw, 150px)
         clamp(22px, 5vw, 64px);
-
-      overflow: hidden;
 
       background:
         radial-gradient(
-          circle at 50% 10%,
-          rgba(208, 160, 62, 0.09),
-          transparent 34%
+          circle at 50% 0%,
+          rgba(219, 231, 243, 0.08),
+          transparent 38%
         ),
         linear-gradient(
           180deg,
-          #102039 0%,
-          var(--navy-deep) 100%
+          #0a1d37 0%,
+          var(--blue-dark) 100%
         );
 
       text-align: center;
@@ -709,47 +526,39 @@
       position: absolute;
       top: 0;
       left: 50%;
-
       width: min(74%, 760px);
       height: 1px;
-
       background:
         linear-gradient(
           90deg,
           transparent,
-          rgba(225, 184, 96, 0.6),
+          rgba(219, 231, 243, 0.48),
           transparent
         );
-
       content: "";
       transform: translateX(-50%);
     }
 
     .inquiry-inner {
-      position: relative;
-      z-index: 2;
-
       width: min(100%, 760px);
       margin: 0 auto;
     }
 
     .inquiry-title {
-      margin: 0 0 25px;
-
-      color: var(--gold-pale);
-      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      margin: 0 0 24px;
+      color: var(--white);
+      font-size: clamp(2.1rem, 4.5vw, 3.6rem);
       font-weight: 400;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       line-height: 1.05;
     }
 
     .inquiry-copy {
       max-width: 640px;
       margin: 0 auto 38px;
-
-      color: var(--ivory-muted);
+      color: var(--blue-pale);
       font-size: clamp(1.08rem, 1.9vw, 1.3rem);
-      line-height: 1.6;
+      line-height: 1.62;
     }
 
     .button-row {
@@ -757,22 +566,21 @@
       align-items: center;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
+      gap: 14px;
     }
 
     .button {
       display: inline-flex;
       min-height: 52px;
       padding: 14px 30px;
-
       align-items: center;
       justify-content: center;
 
-      border: 1px solid var(--gold);
-      color: var(--navy-deep);
-      background: var(--gold-pale);
+      border: 1px solid var(--blue-pale);
+      background: var(--blue-pale);
+      color: var(--blue-deep);
 
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 600;
       letter-spacing: 0.2em;
       line-height: 1;
@@ -781,27 +589,26 @@
 
       transition:
         background 180ms ease,
-        border-color 180ms ease,
         color 180ms ease,
         transform 180ms ease;
     }
 
     .button:hover,
     .button:focus-visible {
-      background: var(--gold-bright);
-      border-color: var(--gold-bright);
+      background: var(--white);
+      color: var(--blue-dark);
       transform: translateY(-2px);
     }
 
     .button-outline {
-      color: var(--gold-pale);
       background: transparent;
+      color: var(--blue-pale);
     }
 
     .button-outline:hover,
     .button-outline:focus-visible {
-      color: var(--navy-deep);
-      background: var(--gold-pale);
+      background: var(--blue-pale);
+      color: var(--blue-deep);
     }
 
     /* ---------------------------------
@@ -819,12 +626,12 @@
       background:
         linear-gradient(
           145deg,
-          rgba(3, 9, 17, 0.96),
-          rgba(13, 27, 46, 0.98)
+          #08192f,
+          #102b4d
         );
 
-      border-top: 1px solid rgba(218, 174, 78, 0.26);
-      border-bottom: 1px solid rgba(218, 174, 78, 0.26);
+      border-top: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
 
       text-align: center;
     }
@@ -832,39 +639,34 @@
     .cowboy-gateway::before,
     .cowboy-gateway::after {
       position: absolute;
-
-      width: 330px;
-      height: 330px;
-
-      border: 1px solid rgba(216, 171, 77, 0.08);
+      width: 340px;
+      height: 340px;
+      border: 1px solid rgba(219, 231, 243, 0.07);
       border-radius: 50%;
-
       content: "";
     }
 
     .cowboy-gateway::before {
-      top: -190px;
-      left: -120px;
+      top: -210px;
+      left: -130px;
     }
 
     .cowboy-gateway::after {
-      right: -130px;
-      bottom: -210px;
+      right: -145px;
+      bottom: -225px;
     }
 
     .cowboy-gateway-inner {
       position: relative;
       z-index: 2;
-
       width: min(100%, 800px);
       margin: 0 auto;
     }
 
     .cowboy-kicker {
       margin: 0 0 18px;
-
-      color: var(--gold);
-      font-size: 0.7rem;
+      color: var(--blue-muted);
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.32em;
       text-transform: uppercase;
@@ -872,9 +674,8 @@
 
     .cowboy-title {
       margin: 0 0 24px;
-
-      color: var(--gold-pale);
-      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--white);
+      font-size: clamp(2.1rem, 5vw, 4rem);
       font-weight: 400;
       letter-spacing: 0.08em;
       line-height: 0.98;
@@ -884,24 +685,22 @@
     .cowboy-copy {
       max-width: 630px;
       margin: 0 auto 35px;
-
-      color: var(--ivory-muted);
+      color: var(--blue-pale);
       font-size: clamp(1.08rem, 2vw, 1.32rem);
       font-style: italic;
-      line-height: 1.55;
+      line-height: 1.56;
     }
 
     .cowboy-link {
       display: inline-flex;
       padding: 12px 0;
-
       align-items: center;
       gap: 13px;
 
-      border-bottom: 1px solid var(--gold);
-      color: var(--gold-pale);
+      border-bottom: 1px solid var(--blue-pale);
+      color: var(--white);
 
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
       letter-spacing: 0.21em;
       line-height: 1;
@@ -922,7 +721,7 @@
 
     .cowboy-link:hover,
     .cowboy-link:focus-visible {
-      color: var(--gold-bright);
+      color: var(--blue-muted);
       gap: 19px;
     }
 
@@ -936,8 +735,8 @@
         clamp(22px, 5vw, 64px)
         max(34px, env(safe-area-inset-bottom));
 
-      background: #07111f;
-      color: rgba(235, 220, 190, 0.58);
+      background: #061426;
+      color: rgba(219, 231, 243, 0.58);
       text-align: center;
     }
 
@@ -945,7 +744,6 @@
       display: flex;
       width: min(100%, var(--page-width));
       margin: 0 auto;
-
       align-items: center;
       justify-content: space-between;
       gap: 28px;
@@ -953,7 +751,7 @@
 
     .footer-identity,
     .footer-location {
-      font-size: 0.66rem;
+      font-size: 0.65rem;
       font-weight: 500;
       letter-spacing: 0.19em;
       line-height: 1.5;
@@ -963,8 +761,7 @@
     .footer-mark {
       width: 7px;
       height: 7px;
-
-      border: 1px solid rgba(215, 170, 74, 0.7);
+      border: 1px solid rgba(219, 231, 243, 0.64);
       flex: 0 0 auto;
       transform: rotate(45deg);
     }
@@ -976,14 +773,6 @@
     @media (max-width: 900px) {
       .header-wordmark-sub {
         display: none;
-      }
-
-      .services {
-        grid-template-columns: 1fr;
-      }
-
-      .service-card {
-        min-height: 0;
       }
     }
 
@@ -1013,7 +802,7 @@
 
       .header-wordmark-main {
         font-size: 0.73rem;
-        letter-spacing: 0.11em;
+        letter-spacing: 0.1em;
       }
 
       .site-nav {
@@ -1021,56 +810,21 @@
       }
 
       .site-nav a {
-        font-size: 0.67rem;
-        letter-spacing: 0.055em;
-      }
-
-      .hero-content {
-        bottom: clamp(7px, 3vw, 18px);
-        width: 98%;
-        padding: 0 10px;
-      }
-
-      .hero-kicker {
-        display: none;
-      }
-
-      .hero-rule {
-        width: 68px;
-        margin-bottom: 8px;
-      }
-
-      .quote {
-        font-size: clamp(0.78rem, 4vw, 1.08rem);
-        line-height: 1.2;
-      }
-
-      .quote-attribution {
-        margin-top: 5px;
-        font-size: 0.48rem;
-        letter-spacing: 0.17em;
+        font-size: 0.64rem;
+        letter-spacing: 0.08em;
       }
 
       .section-title {
         letter-spacing: 0.07em;
       }
 
-      .intro-copy {
-        font-size: 1.12rem;
+      .quote {
+        font-size: clamp(1.3rem, 6vw, 1.8rem);
       }
 
-      .offerings {
-        padding-right: 18px;
-        padding-left: 18px;
-      }
-
-      .service-card {
-        padding: 34px 26px;
-      }
-
-      .participation {
-        padding-right: 20px;
-        padding-left: 20px;
+      .offering-item {
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 15px;
       }
 
       .button-row {
@@ -1104,32 +858,28 @@
       }
 
       .site-nav a {
-        font-size: 0.63rem;
+        font-size: 0.59rem;
       }
 
-      .hero-content {
-        bottom: 5px;
-      }
-
-      .hero-rule {
-        margin-bottom: 5px;
-      }
-
-      .quote {
-        font-size: clamp(0.67rem, 3.5vw, 0.87rem);
-      }
-
-      .quote-attribution {
-        display: none;
-      }
-
-      .intro {
+      .intro,
+      .offerings,
+      .inquiry,
+      .cowboy-gateway {
         padding-right: 18px;
         padding-left: 18px;
       }
 
       .section-title {
-        font-size: 1.9rem;
+        font-size: 1.95rem;
+      }
+
+      .offering-item {
+        display: block;
+      }
+
+      .offering-number {
+        display: block;
+        margin-bottom: 13px;
       }
 
       .cowboy-title {
@@ -1200,13 +950,21 @@
 
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-vignette" aria-hidden="true"></div>
+    </section>
 
-      <div class="hero-content">
-        <p class="hero-kicker">
+    <section class="intro" id="founding-patrons">
+      <div class="intro-inner">
+        <p class="section-kicker">
           Charleston · South Carolina
         </p>
 
-        <div class="hero-rule" aria-hidden="true"></div>
+        <h1 class="section-title">
+          Charleston Polo Club
+        </h1>
+
+        <div class="section-flourish" aria-hidden="true">
+          <span class="section-flourish-mark"></span>
+        </div>
 
         <blockquote class="quote">
           <span class="quote-line">
@@ -1221,22 +979,6 @@
             Thomas Osbert Mordaunt
           </footer>
         </blockquote>
-      </div>
-    </section>
-
-    <section class="intro" id="founding-patrons">
-      <div class="intro-inner">
-        <p class="section-kicker">
-          The Renewal of a Charleston Tradition
-        </p>
-
-        <h1 class="section-title">
-          Charleston Polo Club
-        </h1>
-
-        <div class="section-flourish" aria-hidden="true">
-          <span class="section-flourish-mark"></span>
-        </div>
 
         <p class="intro-copy">
           A new chapter in the sporting life of the Holy City, welcoming
@@ -1248,52 +990,58 @@
 
     <section class="offerings" aria-label="Charleston Polo Club offerings">
       <div class="offerings-inner">
-        <ol class="services">
-          <li class="service-card">
-            <span class="service-number">
+        <ol class="offering-list">
+          <li class="offering-item">
+            <span class="offering-number">
               I
             </span>
 
-            <h2 class="service-title">
-              Beginner Instruction
-            </h2>
+            <div>
+              <h2 class="offering-title">
+                Beginner Instruction
+              </h2>
 
-            <p class="service-copy">
-              Embark upon your polo journey through carefully guided schooling
-              sessions designed to establish sound horsemanship, a secure seat,
-              and the foundations of the game.
-            </p>
+              <p class="offering-copy">
+                Embark upon your polo journey through carefully guided
+                schooling sessions designed to establish sound horsemanship,
+                a secure seat, and the foundations of the game.
+              </p>
+            </div>
           </li>
 
-          <li class="service-card">
-            <span class="service-number">
+          <li class="offering-item">
+            <span class="offering-number">
               II
             </span>
 
-            <h2 class="service-title">
-              Practice Chukkers
-            </h2>
+            <div>
+              <h2 class="offering-title">
+                Practice Chukkers
+              </h2>
 
-            <p class="service-copy">
-              Hire one of our experienced equine companions for structured
-              practice chukkers, instructional play, and developing games.
-            </p>
+              <p class="offering-copy">
+                Hire one of our experienced equine companions for structured
+                practice chukkers, instructional play, and developing games.
+              </p>
+            </div>
           </li>
 
-          <li class="service-card">
-            <span class="service-number">
+          <li class="offering-item">
+            <span class="offering-number">
               III
             </span>
 
-            <h2 class="service-title">
-              CPC Coached League
-            </h2>
+            <div>
+              <h2 class="offering-title">
+                CPC Coached League
+              </h2>
 
-            <p class="service-copy">
-              Claim your number in our coached league and progress from
-              schooling sessions into organized play within a supportive club
-              structure.
-            </p>
+              <p class="offering-copy">
+                Claim your number in our coached league and progress from
+                schooling sessions into organized play within a supportive
+                club structure.
+              </p>
+            </div>
           </li>
         </ol>
 
