@@ -12,7 +12,7 @@
 
   <meta
     name="description"
-    content="Charleston Polo Club — instruction, coached league play, practice chukkers, and the renewal of polo in Charleston, South Carolina."
+    content="Charleston Polo Club — instruction, patronage, and the renewal of polo in Charleston, South Carolina."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,10 +37,6 @@
       --gold-light: #ebca7b;
 
       --line: rgba(219, 231, 243, 0.24);
-
-      --shadow:
-        0 2px 12px rgba(0, 0, 0, 0.7),
-        0 12px 36px rgba(0, 0, 0, 0.42);
 
       --page-width: 1120px;
       --copy-width: 820px;
@@ -98,23 +94,22 @@
     }
 
     /* ---------------------------------
-       Header
+       Sticky header
     --------------------------------- */
 
     .site-header {
-      position: absolute;
-      z-index: 30;
+      position: sticky;
+      z-index: 100;
       top: 0;
-      right: 0;
-      left: 0;
 
       display: flex;
       width: 100%;
+      min-height: 82px;
 
       padding:
-        max(24px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-top))
         clamp(20px, 6vw, 90px)
-        42px;
+        16px;
 
       align-items: center;
       justify-content: space-between;
@@ -122,15 +117,37 @@
       background:
         linear-gradient(
           180deg,
-          rgba(5, 15, 30, 0.84) 0%,
-          rgba(5, 15, 30, 0.42) 54%,
-          transparent 100%
+          rgba(7, 21, 40, 0.98) 0%,
+          rgba(9, 25, 47, 0.95) 100%
         );
+
+      border-bottom: 1px solid rgba(219, 231, 243, 0.12);
+
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.16);
+
+      transition:
+        min-height 180ms ease,
+        padding 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .site-header.is-scrolled {
+      min-height: 68px;
+
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      background: rgba(7, 21, 40, 0.985);
+
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.28);
     }
 
     .header-identity {
       position: relative;
-      z-index: 35;
+      z-index: 105;
 
       display: flex;
       min-width: 0;
@@ -148,7 +165,14 @@
       flex: 0 0 auto;
 
       filter:
-        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.66));
+        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.55));
+
+      transition:
+        width 180ms ease;
+    }
+
+    .site-header.is-scrolled .logo {
+      width: clamp(39px, 3.5vw, 51px);
     }
 
     .header-wordmark {
@@ -158,7 +182,6 @@
       flex-direction: column;
 
       color: var(--gold-light);
-      text-shadow: var(--shadow);
     }
 
     .header-wordmark-main {
@@ -174,6 +197,7 @@
       margin-top: 6px;
 
       color: var(--blue-pale);
+
       font-size: 0.67rem;
       font-style: italic;
       letter-spacing: 0.16em;
@@ -199,7 +223,6 @@
       letter-spacing: 0.15em;
       line-height: 1.2;
       text-decoration: none;
-      text-shadow: var(--shadow);
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -229,21 +252,25 @@
       transform: scaleX(1);
     }
 
+    /* ---------------------------------
+       Fine-line mobile menu control
+    --------------------------------- */
+
     .menu-toggle {
       position: relative;
-      z-index: 35;
+      z-index: 110;
 
       display: none;
-      width: 46px;
-      height: 46px;
+      width: 32px;
+      height: 32px;
       padding: 0;
 
       align-items: center;
       justify-content: center;
 
-      border: 1px solid rgba(235, 202, 123, 0.64);
+      border: 0;
       border-radius: 0;
-      background: rgba(7, 20, 38, 0.44);
+      background: transparent;
       color: var(--gold-light);
 
       cursor: pointer;
@@ -254,8 +281,8 @@
       position: relative;
 
       display: block;
-      width: 21px;
-      height: 14px;
+      width: 16px;
+      height: 11px;
     }
 
     .menu-toggle-line {
@@ -268,6 +295,8 @@
 
       background: currentColor;
 
+      transform-origin: center;
+
       transition:
         top 180ms ease,
         transform 180ms ease,
@@ -279,15 +308,15 @@
     }
 
     .menu-toggle-line:nth-child(2) {
-      top: 6px;
+      top: 5px;
     }
 
     .menu-toggle-line:nth-child(3) {
-      top: 12px;
+      top: 10px;
     }
 
     .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(1) {
-      top: 6px;
+      top: 5px;
       transform: rotate(45deg);
     }
 
@@ -296,7 +325,7 @@
     }
 
     .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(3) {
-      top: 6px;
+      top: 5px;
       transform: rotate(-45deg);
     }
 
@@ -312,9 +341,12 @@
 
       background: var(--blue-dark);
       border-bottom: 1px solid var(--line);
-
-      isolation: isolate;
     }
+
+    /*
+      The complete landscape image remains visible.
+      No overlay, cropping, fixed height, or object-fit cover.
+    */
 
     .hero-image {
       display: block;
@@ -322,23 +354,6 @@
       width: 100%;
       height: auto;
       max-width: none;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(4, 13, 27, 0.25) 0%,
-          rgba(4, 13, 27, 0.01) 36%,
-          rgba(4, 13, 27, 0.03) 68%,
-          rgba(4, 13, 27, 0.25) 100%
-        );
-
-      pointer-events: none;
     }
 
     /* ---------------------------------
@@ -511,8 +526,6 @@
     --------------------------------- */
 
     .inquiry {
-      position: relative;
-
       padding:
         clamp(88px, 11vw, 150px)
         clamp(20px, 5vw, 64px);
@@ -764,25 +777,38 @@
        Mobile navigation
     --------------------------------- */
 
+    .menu-backdrop {
+      display: none;
+    }
+
     @media (max-width: 700px) {
       body {
         font-size: 17px;
       }
 
       .site-header {
+        min-height: 66px;
+
         padding:
-          max(16px, env(safe-area-inset-top))
+          max(11px, env(safe-area-inset-top))
           16px
-          22px;
+          11px;
+      }
+
+      .site-header.is-scrolled {
+        min-height: 60px;
+        padding-top: 8px;
+        padding-bottom: 8px;
       }
 
       .header-identity {
-        max-width: calc(100% - 62px);
-        gap: 10px;
+        max-width: calc(100% - 48px);
+        gap: 9px;
       }
 
-      .logo {
-        width: 41px;
+      .logo,
+      .site-header.is-scrolled .logo {
+        width: 39px;
       }
 
       .header-wordmark {
@@ -815,16 +841,17 @@
 
       .site-nav {
         position: fixed;
-        z-index: 30;
+        z-index: 102;
         top: 0;
         right: 0;
 
         display: flex;
-        width: min(82vw, 330px);
+        width: min(80vw, 315px);
         height: 100svh;
+
         padding:
-          max(105px, calc(env(safe-area-inset-top) + 90px))
-          34px
+          max(90px, calc(env(safe-area-inset-top) + 76px))
+          30px
           48px;
 
         align-items: stretch;
@@ -835,11 +862,11 @@
         background:
           linear-gradient(
             180deg,
-            rgba(7, 21, 40, 0.99),
-            rgba(10, 29, 55, 0.99)
+            rgba(7, 21, 40, 0.995),
+            rgba(10, 29, 55, 0.995)
           );
 
-        border-left: 1px solid rgba(235, 202, 123, 0.34);
+        border-left: 1px solid rgba(235, 202, 123, 0.2);
 
         box-shadow:
           -24px 0 70px rgba(0, 0, 0, 0.42);
@@ -863,11 +890,11 @@
         display: block;
         padding: 18px 0;
 
-        border-bottom: 1px solid rgba(219, 231, 243, 0.14);
+        border-bottom: 1px solid rgba(219, 231, 243, 0.12);
 
         color: var(--gold-light);
 
-        font-size: 0.86rem;
+        font-size: 0.84rem;
         letter-spacing: 0.17em;
         text-align: left;
       }
@@ -878,14 +905,12 @@
 
       .menu-backdrop {
         position: fixed;
-        z-index: 25;
+        z-index: 101;
         inset: 0;
 
         display: block;
 
-        background: rgba(3, 10, 20, 0.62);
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
+        background: rgba(3, 10, 20, 0.6);
 
         opacity: 0;
         pointer-events: none;
@@ -929,12 +954,13 @@
       }
 
       .header-identity {
-        max-width: calc(100% - 58px);
+        max-width: calc(100% - 43px);
         gap: 8px;
       }
 
-      .logo {
-        width: 38px;
+      .logo,
+      .site-header.is-scrolled .logo {
+        width: 37px;
       }
 
       .header-wordmark-main {
@@ -948,8 +974,30 @@
       }
 
       .menu-toggle {
-        width: 43px;
-        height: 43px;
+        width: 30px;
+        height: 30px;
+      }
+
+      .menu-toggle-lines {
+        width: 15px;
+        height: 10px;
+      }
+
+      .menu-toggle-line:nth-child(1) {
+        top: 0;
+      }
+
+      .menu-toggle-line:nth-child(2) {
+        top: 4.5px;
+      }
+
+      .menu-toggle-line:nth-child(3) {
+        top: 9px;
+      }
+
+      .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(1),
+      .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(3) {
+        top: 4.5px;
       }
 
       .intro,
@@ -1050,8 +1098,6 @@
         class="hero-image"
         alt="King Charles overlooking the Charleston skyline"
       />
-
-      <div class="hero-overlay" aria-hidden="true"></div>
     </section>
 
     <section class="intro" id="founding-patrons">
@@ -1183,6 +1229,7 @@
   </footer>
 
   <script>
+    const siteHeader = document.querySelector(".site-header");
     const menuToggle = document.querySelector(".menu-toggle");
     const siteNav = document.querySelector(".site-nav");
     const menuBackdrop = document.querySelector(".menu-backdrop");
@@ -1190,6 +1237,7 @@
 
     function setMenuState(isOpen) {
       menuToggle.setAttribute("aria-expanded", String(isOpen));
+
       menuToggle.setAttribute(
         "aria-label",
         isOpen ? "Close navigation" : "Open navigation"
@@ -1198,6 +1246,13 @@
       siteNav.classList.toggle("is-open", isOpen);
       menuBackdrop.classList.toggle("is-open", isOpen);
       document.body.classList.toggle("menu-open", isOpen);
+    }
+
+    function updateStickyHeader() {
+      siteHeader.classList.toggle(
+        "is-scrolled",
+        window.scrollY > 24
+      );
     }
 
     menuToggle.addEventListener("click", () => {
@@ -1228,6 +1283,12 @@
         setMenuState(false);
       }
     });
+
+    window.addEventListener("scroll", updateStickyHeader, {
+      passive: true
+    });
+
+    updateStickyHeader();
   </script>
 </body>
 </html>
