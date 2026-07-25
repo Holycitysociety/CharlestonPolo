@@ -29,14 +29,10 @@
       --text-shadow: 0 3px 14px rgba(0, 0, 0, 0.72);
 
       /*
-        Adjust these two values to move King Charles inside the frame.
+        Adjust these values to reposition the landscape image.
 
         First value: horizontal position
         Second value: vertical position
-
-        Examples:
-        65% 50% = image shifted toward the right
-        40% 50% = image shifted toward the left
       */
       --hero-position-desktop: 50% 50%;
       --hero-position-tablet: 55% 50%;
@@ -242,15 +238,6 @@
       text-align: center;
     }
 
-    .hero-crest {
-      width: clamp(150px, 21vw, 270px);
-      height: auto;
-      margin: 0 auto clamp(18px, 3vh, 28px);
-
-      filter:
-        drop-shadow(0 6px 14px rgba(0, 0, 0, 0.62));
-    }
-
     .quote {
       margin: 0;
 
@@ -417,11 +404,6 @@
         padding: 30px 14px;
       }
 
-      .hero-crest {
-        width: clamp(142px, 45vw, 195px);
-        margin-bottom: 20px;
-      }
-
       .quote {
         font-size: clamp(1.12rem, 5.4vw, 1.42rem);
         line-height: 1.4;
@@ -538,12 +520,6 @@
       </div>
 
       <div class="hero-content">
-        <img
-          src="crest.png"
-          class="hero-crest"
-          alt="Charleston Polo Club Crest"
-        />
-
         <blockquote class="quote">
           <span class="quote-line">
             “Let others play at other things
