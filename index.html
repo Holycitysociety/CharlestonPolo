@@ -29,16 +29,23 @@
       --blue-deep: #0d2342;
       --blue-dark: #09192f;
       --blue-soft: #244a7a;
+
       --blue-pale: #dbe7f3;
       --blue-muted: #afc4d9;
+
       --white: #f7f9fc;
-      --line: rgba(219, 231, 243, 0.3);
-      --line-soft: rgba(219, 231, 243, 0.14);
+
+      --gold: #d1a33a;
+      --gold-light: #ebca7b;
+
+      --line: rgba(219, 231, 243, 0.24);
+
       --shadow:
         0 2px 12px rgba(0, 0, 0, 0.7),
         0 12px 36px rgba(0, 0, 0, 0.42);
+
       --page-width: 1120px;
-      --copy-width: 760px;
+      --copy-width: 820px;
     }
 
     * {
@@ -53,14 +60,17 @@
     body {
       margin: 0;
       overflow-x: hidden;
+
       background: var(--blue-deep);
       color: var(--blue-pale);
+
       font-family:
         "Cormorant Garamond",
         Garamond,
         Georgia,
         "Times New Roman",
         serif;
+
       font-size: 19px;
       font-weight: 400;
       letter-spacing: 0.015em;
@@ -77,7 +87,7 @@
     }
 
     ::selection {
-      background: var(--blue-pale);
+      background: var(--gold-light);
       color: var(--blue-deep);
     }
 
@@ -94,6 +104,7 @@
 
       display: flex;
       width: 100%;
+
       padding:
         max(24px, env(safe-area-inset-top))
         clamp(20px, 6vw, 90px)
@@ -105,7 +116,7 @@
       background:
         linear-gradient(
           180deg,
-          rgba(5, 15, 30, 0.82) 0%,
+          rgba(5, 15, 30, 0.84) 0%,
           rgba(5, 15, 30, 0.42) 54%,
           transparent 100%
         );
@@ -114,27 +125,30 @@
     .header-identity {
       display: flex;
       min-width: 0;
+
       align-items: center;
       gap: 16px;
-      color: var(--white);
+
+      color: var(--gold-light);
       text-decoration: none;
     }
 
     .logo {
-      width: clamp(42px, 4vw, 58px);
+      width: clamp(44px, 4vw, 60px);
       height: auto;
       flex: 0 0 auto;
+
       filter:
-        grayscale(1)
-        brightness(2.1)
-        contrast(0.72)
-        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.64));
+        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.66));
     }
 
     .header-wordmark {
       display: flex;
       min-width: 0;
+
       flex-direction: column;
+
+      color: var(--gold-light);
       text-shadow: var(--shadow);
     }
 
@@ -149,6 +163,7 @@
 
     .header-wordmark-sub {
       margin-top: 6px;
+
       color: var(--blue-pale);
       font-size: 0.67rem;
       font-style: italic;
@@ -159,6 +174,7 @@
 
     .site-nav {
       display: flex;
+
       align-items: center;
       justify-content: flex-end;
       gap: clamp(18px, 2.8vw, 40px);
@@ -166,9 +182,11 @@
 
     .site-nav a {
       position: relative;
-      color: var(--white);
+
+      color: var(--gold-light);
+
       font-size: clamp(0.74rem, 1vw, 0.94rem);
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.15em;
       line-height: 1.2;
       text-decoration: none;
@@ -182,17 +200,15 @@
       right: 0;
       bottom: -8px;
       left: 0;
+
       height: 1px;
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--blue-pale),
-          transparent
-        );
+
+      background: var(--gold-light);
+
       content: "";
       opacity: 0;
-      transform: scaleX(0.25);
+      transform: scaleX(0.3);
+
       transition:
         opacity 180ms ease,
         transform 180ms ease;
@@ -210,20 +226,26 @@
 
     .hero {
       position: relative;
+
       width: 100%;
       overflow: hidden;
+
       background: var(--blue-dark);
       border-bottom: 1px solid var(--line);
+
       isolation: isolate;
     }
 
     /*
-      The full landscape image remains visible at every width.
-      The image itself determines the hero height.
+      The landscape image determines the hero height.
+
+      The complete image remains visible at every width.
+      It is never cropped or forced into a fixed-height frame.
     */
 
     .hero-image {
       display: block;
+
       width: 100%;
       height: auto;
       max-width: none;
@@ -233,30 +255,16 @@
       position: absolute;
       z-index: 1;
       inset: 0;
+
       background:
         linear-gradient(
           180deg,
-          rgba(4, 13, 27, 0.28) 0%,
+          rgba(4, 13, 27, 0.25) 0%,
           rgba(4, 13, 27, 0.01) 36%,
-          rgba(4, 13, 27, 0.04) 66%,
-          rgba(4, 13, 27, 0.32) 100%
-        ),
-        linear-gradient(
-          90deg,
-          rgba(8, 24, 45, 0.14) 0%,
-          transparent 30%,
-          transparent 70%,
-          rgba(8, 24, 45, 0.14) 100%
+          rgba(4, 13, 27, 0.03) 68%,
+          rgba(4, 13, 27, 0.25) 100%
         );
-      pointer-events: none;
-    }
 
-    .hero-vignette {
-      position: absolute;
-      z-index: 2;
-      inset: 0;
-      box-shadow:
-        inset 0 0 150px rgba(3, 10, 21, 0.26);
       pointer-events: none;
     }
 
@@ -266,16 +274,17 @@
 
     .intro {
       position: relative;
+
       padding:
         clamp(76px, 10vw, 132px)
-        clamp(22px, 5vw, 64px)
-        clamp(70px, 9vw, 112px);
+        clamp(18px, 5vw, 64px)
+        clamp(82px, 10vw, 126px);
 
       background:
         radial-gradient(
           ellipse at 50% 0%,
-          rgba(219, 231, 243, 0.08) 0%,
-          transparent 44%
+          rgba(219, 231, 243, 0.075) 0%,
+          transparent 47%
         ),
         linear-gradient(
           180deg,
@@ -286,90 +295,51 @@
       text-align: center;
     }
 
-    .intro::before {
-      position: absolute;
-      top: 0;
-      right: 8%;
-      left: 8%;
-      height: 1px;
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(219, 231, 243, 0.55),
-          transparent
-        );
-      content: "";
-    }
-
     .intro-inner {
       width: min(100%, var(--copy-width));
       margin: 0 auto;
     }
 
     .section-kicker {
-      margin: 0 0 18px;
+      margin: 0 0 clamp(18px, 3vw, 27px);
+
       color: var(--blue-muted);
-      font-size: clamp(0.66rem, 1vw, 0.8rem);
+
+      font-size: clamp(0.65rem, 1vw, 0.79rem);
       font-weight: 600;
-      letter-spacing: 0.33em;
+      letter-spacing: 0.32em;
       line-height: 1.2;
       text-transform: uppercase;
     }
 
     .section-title {
       margin: 0;
-      color: var(--white);
-      font-size: clamp(2.15rem, 5vw, 4.2rem);
+
+      color: var(--gold-light);
+
+      /*
+        Keeps the full title on one line while scaling it
+        to match the available screen width.
+      */
+
+      font-size: clamp(1.55rem, 5.2vw, 3.65rem);
       font-weight: 400;
-      letter-spacing: 0.1em;
-      line-height: 0.98;
+      letter-spacing: clamp(0.045em, 0.7vw, 0.11em);
+      line-height: 1;
       text-transform: uppercase;
-    }
-
-    .section-flourish {
-      display: flex;
-      width: min(100%, 340px);
-      margin: clamp(30px, 4vw, 44px) auto;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .section-flourish::before,
-    .section-flourish::after {
-      height: 1px;
-      flex: 1;
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          var(--blue-muted)
-        );
-      content: "";
-    }
-
-    .section-flourish::after {
-      background:
-        linear-gradient(
-          90deg,
-          var(--blue-muted),
-          transparent
-        );
-    }
-
-    .section-flourish-mark {
-      width: 7px;
-      height: 7px;
-      border: 1px solid var(--blue-pale);
-      transform: rotate(45deg);
+      white-space: nowrap;
     }
 
     .quote {
       max-width: 700px;
-      margin: 0 auto;
+      margin:
+        clamp(42px, 6vw, 68px)
+        auto
+        0;
+
       color: var(--white);
-      font-size: clamp(1.5rem, 3vw, 2.35rem);
+
+      font-size: clamp(1.45rem, 3vw, 2.35rem);
       font-style: italic;
       font-weight: 400;
       letter-spacing: 0.01em;
@@ -382,8 +352,11 @@
 
     .quote-attribution {
       display: block;
+
       margin-top: 18px;
+
       color: var(--blue-muted);
+
       font-size: 0.72rem;
       font-style: normal;
       font-weight: 600;
@@ -392,23 +365,28 @@
     }
 
     .intro-copy {
-      max-width: 650px;
-      margin: clamp(34px, 5vw, 52px) auto 0;
+      max-width: 660px;
+
+      margin:
+        clamp(36px, 5vw, 54px)
+        auto
+        0;
+
       color: var(--blue-pale);
+
       font-size: clamp(1.12rem, 2vw, 1.38rem);
       line-height: 1.62;
     }
 
     /* ---------------------------------
-       Club offerings
+       Participation
     --------------------------------- */
 
-    .offerings {
-      position: relative;
+    .participation-section {
       padding:
-        clamp(74px, 9vw, 116px)
-        clamp(22px, 5vw, 64px)
-        clamp(90px, 11vw, 142px);
+        clamp(72px, 9vw, 116px)
+        clamp(20px, 5vw, 64px)
+        clamp(82px, 10vw, 128px);
 
       background:
         linear-gradient(
@@ -416,85 +394,47 @@
           var(--blue-deep) 0%,
           #0a1d37 100%
         );
-    }
 
-    .offerings-inner {
-      width: min(100%, 900px);
-      margin: 0 auto;
-    }
-
-    .offering-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      border-top: 1px solid var(--line);
-    }
-
-    .offering-item {
-      display: grid;
-      padding:
-        clamp(28px, 5vw, 48px)
-        0;
-
-      grid-template-columns: 70px minmax(0, 1fr);
-      gap: clamp(18px, 4vw, 42px);
-      align-items: start;
-
-      border-bottom: 1px solid var(--line);
-    }
-
-    .offering-number {
-      padding-top: 5px;
-      color: var(--blue-muted);
-      font-size: 0.74rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-    }
-
-    .offering-title {
-      margin: 0 0 12px;
-      color: var(--white);
-      font-size: clamp(1.55rem, 3vw, 2.25rem);
-      font-weight: 400;
-      letter-spacing: 0.035em;
-      line-height: 1.08;
-    }
-
-    .offering-copy {
-      max-width: 680px;
-      margin: 0;
-      color: var(--blue-pale);
-      font-size: clamp(1.04rem, 1.7vw, 1.2rem);
-      line-height: 1.65;
+      text-align: center;
     }
 
     .participation {
       width: min(100%, 780px);
-      margin: clamp(62px, 8vw, 98px) auto 0;
-      padding:
-        clamp(28px, 5vw, 46px)
-        clamp(22px, 6vw, 66px);
-
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      text-align: center;
+      margin: 0 auto;
     }
 
     .participation-kicker {
-      margin: 0 0 13px;
+      margin: 0 0 18px;
+
       color: var(--blue-muted);
+
       font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.3em;
+      line-height: 1.2;
       text-transform: uppercase;
     }
 
-    .participation-copy {
-      margin: 0;
+    .participation-title {
+      margin: 0 0 27px;
+
       color: var(--white);
-      font-size: clamp(1.18rem, 2.3vw, 1.62rem);
+
+      font-size: clamp(1.9rem, 4vw, 3.15rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+    }
+
+    .participation-copy {
+      max-width: 680px;
+      margin: 0 auto;
+
+      color: var(--blue-pale);
+
+      font-size: clamp(1.14rem, 2.1vw, 1.48rem);
       font-style: italic;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     /* ---------------------------------
@@ -503,15 +443,16 @@
 
     .inquiry {
       position: relative;
+
       padding:
         clamp(88px, 11vw, 150px)
-        clamp(22px, 5vw, 64px);
+        clamp(20px, 5vw, 64px);
 
       background:
         radial-gradient(
           circle at 50% 0%,
-          rgba(219, 231, 243, 0.08),
-          transparent 38%
+          rgba(219, 231, 243, 0.065),
+          transparent 40%
         ),
         linear-gradient(
           180deg,
@@ -522,23 +463,6 @@
       text-align: center;
     }
 
-    .inquiry::before {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: min(74%, 760px);
-      height: 1px;
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(219, 231, 243, 0.48),
-          transparent
-        );
-      content: "";
-      transform: translateX(-50%);
-    }
-
     .inquiry-inner {
       width: min(100%, 760px);
       margin: 0 auto;
@@ -546,7 +470,9 @@
 
     .inquiry-title {
       margin: 0 0 24px;
+
       color: var(--white);
+
       font-size: clamp(2.1rem, 4.5vw, 3.6rem);
       font-weight: 400;
       letter-spacing: 0.05em;
@@ -555,14 +481,21 @@
 
     .inquiry-copy {
       max-width: 640px;
-      margin: 0 auto 38px;
+
+      margin:
+        0
+        auto
+        38px;
+
       color: var(--blue-pale);
+
       font-size: clamp(1.08rem, 1.9vw, 1.3rem);
       line-height: 1.62;
     }
 
     .button-row {
       display: flex;
+
       align-items: center;
       flex-wrap: wrap;
       justify-content: center;
@@ -571,8 +504,10 @@
 
     .button {
       display: inline-flex;
+
       min-height: 52px;
       padding: 14px 30px;
+
       align-items: center;
       justify-content: center;
 
@@ -616,12 +551,9 @@
     --------------------------------- */
 
     .cowboy-gateway {
-      position: relative;
       padding:
-        clamp(76px, 10vw, 126px)
-        clamp(22px, 5vw, 64px);
-
-      overflow: hidden;
+        clamp(78px, 10vw, 126px)
+        clamp(20px, 5vw, 64px);
 
       background:
         linear-gradient(
@@ -630,51 +562,34 @@
           #102b4d
         );
 
-      border-top: 1px solid var(--line-soft);
-      border-bottom: 1px solid var(--line-soft);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
 
       text-align: center;
     }
 
-    .cowboy-gateway::before,
-    .cowboy-gateway::after {
-      position: absolute;
-      width: 340px;
-      height: 340px;
-      border: 1px solid rgba(219, 231, 243, 0.07);
-      border-radius: 50%;
-      content: "";
-    }
-
-    .cowboy-gateway::before {
-      top: -210px;
-      left: -130px;
-    }
-
-    .cowboy-gateway::after {
-      right: -145px;
-      bottom: -225px;
-    }
-
     .cowboy-gateway-inner {
-      position: relative;
-      z-index: 2;
       width: min(100%, 800px);
       margin: 0 auto;
     }
 
     .cowboy-kicker {
       margin: 0 0 18px;
+
       color: var(--blue-muted);
+
       font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.32em;
+      line-height: 1.2;
       text-transform: uppercase;
     }
 
     .cowboy-title {
       margin: 0 0 24px;
+
       color: var(--white);
+
       font-size: clamp(2.1rem, 5vw, 4rem);
       font-weight: 400;
       letter-spacing: 0.08em;
@@ -684,8 +599,14 @@
 
     .cowboy-copy {
       max-width: 630px;
-      margin: 0 auto 35px;
+
+      margin:
+        0
+        auto
+        35px;
+
       color: var(--blue-pale);
+
       font-size: clamp(1.08rem, 2vw, 1.32rem);
       font-style: italic;
       line-height: 1.56;
@@ -693,7 +614,9 @@
 
     .cowboy-link {
       display: inline-flex;
+
       padding: 12px 0;
+
       align-items: center;
       gap: 13px;
 
@@ -714,6 +637,7 @@
 
     .cowboy-link::after {
       content: "→";
+
       font-size: 1.05rem;
       font-weight: 400;
       line-height: 1;
@@ -732,18 +656,21 @@
     .site-footer {
       padding:
         34px
-        clamp(22px, 5vw, 64px)
+        clamp(20px, 5vw, 64px)
         max(34px, env(safe-area-inset-bottom));
 
       background: #061426;
       color: rgba(219, 231, 243, 0.58);
+
       text-align: center;
     }
 
     .footer-inner {
       display: flex;
+
       width: min(100%, var(--page-width));
       margin: 0 auto;
+
       align-items: center;
       justify-content: space-between;
       gap: 28px;
@@ -758,12 +685,10 @@
       text-transform: uppercase;
     }
 
-    .footer-mark {
-      width: 7px;
-      height: 7px;
-      border: 1px solid rgba(219, 231, 243, 0.64);
-      flex: 0 0 auto;
-      transform: rotate(45deg);
+    .footer-separator {
+      color: var(--gold);
+      font-size: 0.9rem;
+      line-height: 1;
     }
 
     /* ---------------------------------
@@ -815,16 +740,12 @@
       }
 
       .section-title {
-        letter-spacing: 0.07em;
+        font-size: clamp(1.38rem, 6.8vw, 2.2rem);
+        letter-spacing: 0.035em;
       }
 
       .quote {
         font-size: clamp(1.3rem, 6vw, 1.8rem);
-      }
-
-      .offering-item {
-        grid-template-columns: 42px minmax(0, 1fr);
-        gap: 15px;
       }
 
       .button-row {
@@ -838,7 +759,7 @@
 
       .footer-inner {
         flex-direction: column;
-        gap: 18px;
+        gap: 16px;
       }
     }
 
@@ -862,24 +783,16 @@
       }
 
       .intro,
-      .offerings,
+      .participation-section,
       .inquiry,
       .cowboy-gateway {
-        padding-right: 18px;
-        padding-left: 18px;
+        padding-right: 16px;
+        padding-left: 16px;
       }
 
       .section-title {
-        font-size: 1.95rem;
-      }
-
-      .offering-item {
-        display: block;
-      }
-
-      .offering-number {
-        display: block;
-        margin-bottom: 13px;
+        font-size: clamp(1.18rem, 6.35vw, 1.65rem);
+        letter-spacing: 0.018em;
       }
 
       .cowboy-title {
@@ -949,7 +862,6 @@
       />
 
       <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="hero-vignette" aria-hidden="true"></div>
     </section>
 
     <section class="intro" id="founding-patrons">
@@ -961,10 +873,6 @@
         <h1 class="section-title">
           Charleston Polo Club
         </h1>
-
-        <div class="section-flourish" aria-hidden="true">
-          <span class="section-flourish-mark"></span>
-        </div>
 
         <blockquote class="quote">
           <span class="quote-line">
@@ -988,74 +896,24 @@
       </div>
     </section>
 
-    <section class="offerings" aria-label="Charleston Polo Club offerings">
-      <div class="offerings-inner">
-        <ol class="offering-list">
-          <li class="offering-item">
-            <span class="offering-number">
-              I
-            </span>
+    <section
+      class="participation-section"
+      aria-label="Charleston Polo participation"
+    >
+      <div class="participation">
+        <p class="participation-kicker">
+          Open to New Players
+        </p>
 
-            <div>
-              <h2 class="offering-title">
-                Beginner Instruction
-              </h2>
+        <h2 class="participation-title">
+          Enter the King of Games
+        </h2>
 
-              <p class="offering-copy">
-                Embark upon your polo journey through carefully guided
-                schooling sessions designed to establish sound horsemanship,
-                a secure seat, and the foundations of the game.
-              </p>
-            </div>
-          </li>
-
-          <li class="offering-item">
-            <span class="offering-number">
-              II
-            </span>
-
-            <div>
-              <h2 class="offering-title">
-                Practice Chukkers
-              </h2>
-
-              <p class="offering-copy">
-                Hire one of our experienced equine companions for structured
-                practice chukkers, instructional play, and developing games.
-              </p>
-            </div>
-          </li>
-
-          <li class="offering-item">
-            <span class="offering-number">
-              III
-            </span>
-
-            <div>
-              <h2 class="offering-title">
-                CPC Coached League
-              </h2>
-
-              <p class="offering-copy">
-                Claim your number in our coached league and progress from
-                schooling sessions into organized play within a supportive
-                club structure.
-              </p>
-            </div>
-          </li>
-        </ol>
-
-        <div class="participation">
-          <p class="participation-kicker">
-            Open to New Players
-          </p>
-
-          <p class="participation-copy">
-            No previous experience is required. Necessary equipment, playing
-            gear, and a suitable experienced horse are provided for the
-            beginning of your polo journey.
-          </p>
-        </div>
+        <p class="participation-copy">
+          No previous experience is required. Necessary equipment, playing
+          gear, and a suitable experienced horse are provided for the
+          beginning of your polo journey.
+        </p>
       </div>
     </section>
 
@@ -1066,7 +924,7 @@
         </p>
 
         <h2 class="inquiry-title">
-          Enter the Game
+          Join Charleston Polo
         </h2>
 
         <p class="inquiry-copy">
@@ -1124,7 +982,9 @@
         © 2026 Charleston Polo Club
       </div>
 
-      <div class="footer-mark" aria-hidden="true"></div>
+      <div class="footer-separator" aria-hidden="true">
+        ·
+      </div>
 
       <div class="footer-location">
         Charleston · South Carolina
