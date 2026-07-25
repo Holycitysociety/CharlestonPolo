@@ -2,178 +2,593 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
   <title>Charleston Polo Club</title>
 
+  <meta
+    name="description"
+    content="Charleston Polo Club — instruction, coached league play, practice chukkers, and the renewal of polo in Charleston, South Carolina."
+  />
+
   <style>
-    body {
-      margin: 0;
-      background: #172846;
-      color: #d9a21b;
-      font-family: Georgia, "Times New Roman", serif;
-      letter-spacing: 0.12em;
+    :root {
+      --navy: #172846;
+      --navy-deep: #0c182b;
+      --navy-soft: #203656;
+
+      --gold: #d9a21b;
+      --gold-light: #efc552;
+      --gold-muted: #bd8e1c;
+
+      --cream: #f0e7d4;
+      --text-shadow: 0 3px 14px rgba(0, 0, 0, 0.72);
+
+      /*
+        Adjust these two values to move King Charles inside the frame.
+
+        First value: horizontal position
+        Second value: vertical position
+
+        Examples:
+        65% 50% = image shifted toward the right
+        40% 50% = image shifted toward the left
+      */
+      --hero-position-desktop: 50% 50%;
+      --hero-position-tablet: 55% 50%;
+      --hero-position-mobile: 64% 50%;
     }
 
-    header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 28px 7%;
+    * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--navy);
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--navy);
+      color: var(--gold);
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: 0.08em;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* -----------------------------
+       Header
+    ----------------------------- */
+
+    .site-header {
+      position: absolute;
+      z-index: 20;
+      top: 0;
+      right: 0;
+      left: 0;
+
       display: flex;
-      justify-content: space-between;
+      width: 100%;
+      padding:
+        max(24px, env(safe-area-inset-top))
+        clamp(22px, 7vw, 96px)
+        24px;
+
       align-items: center;
-      z-index: 10;
+      justify-content: space-between;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(5, 13, 25, 0.7) 0%,
+          rgba(5, 13, 25, 0.28) 58%,
+          transparent 100%
+        );
+    }
+
+    .header-logo-link {
+      display: block;
+      flex: 0 0 auto;
     }
 
     .logo {
-      width: 48px;
+      width: clamp(44px, 4vw, 58px);
+      height: auto;
+
+      filter:
+        drop-shadow(0 3px 7px rgba(0, 0, 0, 0.7));
     }
 
-    nav a {
-      color: #d9a21b;
-      text-decoration: none;
-      margin-left: 26px;
-      font-size: 16px;
-    }
-
-    .hero {
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(10,18,32,.25), rgba(10,18,32,.25)),
-        url("hero.jpg") center center / cover no-repeat;
+    .site-nav {
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
+      justify-content: flex-end;
+      gap: clamp(16px, 2.4vw, 34px);
+    }
+
+    .site-nav a {
       position: relative;
+
+      color: var(--gold-light);
+      font-size: clamp(0.72rem, 1.1vw, 1rem);
+      letter-spacing: 0.1em;
+      line-height: 1.2;
+      text-decoration: none;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+      white-space: nowrap;
+    }
+
+    .site-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: -7px;
+      left: 0;
+
+      height: 1px;
+
+      background: var(--gold-light);
+      content: "";
+      opacity: 0;
+      transform: scaleX(0);
+      transition:
+        opacity 160ms ease,
+        transform 160ms ease;
+    }
+
+    .site-nav a:hover::after,
+    .site-nav a:focus-visible::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    /* -----------------------------
+       Hero
+    ----------------------------- */
+
+    .hero {
+      position: relative;
+
+      display: grid;
+      min-height: 100svh;
+      overflow: hidden;
+
+      place-items: center;
+      isolation: isolate;
+    }
+
+    .hero-media {
+      position: absolute;
+      z-index: -3;
+      inset: 0;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: var(--hero-position-desktop);
+    }
+
+    .hero::before {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(5, 12, 24, 0.25) 0%,
+          rgba(5, 12, 24, 0.08) 30%,
+          rgba(5, 12, 24, 0.17) 67%,
+          rgba(5, 12, 24, 0.62) 100%
+        ),
+        radial-gradient(
+          ellipse at center,
+          rgba(16, 29, 49, 0.02) 25%,
+          rgba(7, 15, 28, 0.32) 100%
+        );
+
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      height: 22%;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(23, 40, 70, 0.48) 66%,
+          var(--navy) 100%
+        );
+
+      content: "";
+      pointer-events: none;
     }
 
     .hero-content {
-      margin-top: 70px;
-      text-shadow: 0 2px 8px rgba(0,0,0,.55);
-    }
+      display: flex;
+      width: min(92%, 760px);
+      margin-top: clamp(78px, 10vh, 128px);
+      padding:
+        clamp(28px, 5vh, 54px)
+        clamp(18px, 4vw, 44px);
 
-    .hero-crest {
-      width: 260px;
-      max-width: 45vw;
-      margin-bottom: 22px;
-    }
+      align-items: center;
+      flex-direction: column;
 
-    .quote {
-      font-size: 28px;
-      line-height: 1.35;
-      font-style: italic;
-      color: #d9a21b;
-      letter-spacing: 0.02em;
-    }
-
-    .section {
-      background: #172846;
-      padding: 70px 20px 90px;
       text-align: center;
     }
 
+    .hero-crest {
+      width: clamp(150px, 21vw, 270px);
+      height: auto;
+      margin: 0 auto clamp(18px, 3vh, 28px);
+
+      filter:
+        drop-shadow(0 6px 14px rgba(0, 0, 0, 0.62));
+    }
+
+    .quote {
+      margin: 0;
+
+      color: var(--gold-light);
+      font-size: clamp(1.28rem, 2.2vw, 1.9rem);
+      font-style: italic;
+      font-weight: normal;
+      letter-spacing: 0.018em;
+      line-height: 1.38;
+      text-shadow: var(--text-shadow);
+    }
+
+    .quote-line {
+      display: block;
+    }
+
+    /* -----------------------------
+       Information section
+    ----------------------------- */
+
+    .section {
+      position: relative;
+
+      padding:
+        clamp(62px, 8vw, 96px)
+        clamp(20px, 5vw, 54px)
+        clamp(76px, 9vw, 112px);
+
+      background:
+        radial-gradient(
+          ellipse at 50% 0%,
+          rgba(255, 255, 255, 0.035) 0%,
+          transparent 48%
+        ),
+        linear-gradient(
+          180deg,
+          var(--navy) 0%,
+          #142540 100%
+        );
+
+      text-align: center;
+    }
+
+    .section::before {
+      position: absolute;
+      top: 0;
+      right: 7%;
+      left: 7%;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(217, 162, 27, 0.55),
+          transparent
+        );
+
+      content: "";
+    }
+
     .section-inner {
-      max-width: 760px;
+      width: min(100%, 780px);
       margin: 0 auto;
     }
 
     h1 {
+      margin:
+        0
+        0
+        clamp(38px, 6vw, 58px);
+
+      color: var(--gold-light);
+      font-size: clamp(1.75rem, 3.4vw, 2.4rem);
       font-weight: normal;
-      font-size: 34px;
-      margin-bottom: 42px;
-      color: #d9a21b;
+      letter-spacing: 0.14em;
+      line-height: 1.2;
+      text-transform: uppercase;
     }
 
-    ul {
+    .services {
+      max-width: 700px;
+      margin: 0 auto clamp(42px, 7vw, 64px);
+      padding-left: 1.35em;
+
+      color: var(--gold);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      letter-spacing: 0.045em;
+      line-height: 1.85;
       text-align: left;
-      line-height: 2.1;
-      font-size: 19px;
-      margin: 0 auto 55px;
-      max-width: 680px;
     }
 
-    li {
-      margin-bottom: 18px;
+    .services li {
+      margin-bottom: clamp(14px, 2.5vw, 22px);
+      padding-left: 0.35em;
+    }
+
+    .services li:last-child {
+      margin-bottom: 0;
     }
 
     .bold-copy {
-      font-weight: bold;
-      font-size: 19px;
-      line-height: 2.1;
-      max-width: 620px;
+      max-width: 650px;
       margin: 0 auto;
+
+      color: var(--gold-light);
+      font-size: clamp(1rem, 1.7vw, 1.18rem);
+      font-weight: bold;
+      letter-spacing: 0.045em;
+      line-height: 1.8;
     }
 
-    @media (max-width: 700px) {
-      header {
-        padding: 20px;
+    /* -----------------------------
+       Tablet
+    ----------------------------- */
+
+    @media (max-width: 900px) {
+      .hero-image {
+        object-position: var(--hero-position-tablet);
       }
 
-      nav a {
-        margin-left: 12px;
-        font-size: 13px;
+      .hero {
+        min-height: max(760px, 100svh);
+      }
+    }
+
+    /* -----------------------------
+       Mobile
+    ----------------------------- */
+
+    @media (max-width: 700px) {
+      .site-header {
+        padding:
+          max(18px, env(safe-area-inset-top))
+          18px
+          18px;
+      }
+
+      .logo {
+        width: 43px;
+      }
+
+      .site-nav {
+        gap: 13px;
+      }
+
+      .site-nav a {
+        font-size: 0.69rem;
+        letter-spacing: 0.055em;
+      }
+
+      .hero {
+        min-height: 86svh;
+      }
+
+      .hero-image {
+        object-position: var(--hero-position-mobile);
+      }
+
+      .hero-content {
+        width: 94%;
+        margin-top: 74px;
+        padding: 30px 14px;
       }
 
       .hero-crest {
-        width: 190px;
+        width: clamp(142px, 45vw, 195px);
+        margin-bottom: 20px;
       }
 
       .quote {
-        font-size: 22px;
+        font-size: clamp(1.12rem, 5.4vw, 1.42rem);
+        line-height: 1.4;
+      }
+
+      .section {
+        padding:
+          62px
+          22px
+          82px;
       }
 
       h1 {
-        font-size: 27px;
+        margin-bottom: 40px;
+        font-size: clamp(1.45rem, 7vw, 1.85rem);
+        letter-spacing: 0.11em;
       }
 
-      ul, .bold-copy {
-        font-size: 16px;
+      .services {
+        padding-left: 1.15em;
+        font-size: 1rem;
+        letter-spacing: 0.025em;
+        line-height: 1.75;
+      }
+
+      .services li {
+        margin-bottom: 18px;
+        padding-left: 0.15em;
+      }
+
+      .bold-copy {
+        font-size: 1rem;
+        letter-spacing: 0.025em;
+        line-height: 1.7;
+      }
+    }
+
+    /* -----------------------------
+       Narrow phones
+    ----------------------------- */
+
+    @media (max-width: 430px) {
+      .site-header {
+        align-items: flex-start;
+      }
+
+      .site-nav {
+        max-width: 245px;
+        flex-wrap: wrap;
+        row-gap: 8px;
+      }
+
+      .site-nav a {
+        font-size: 0.65rem;
+      }
+
+      .hero {
+        min-height: 82svh;
+      }
+
+      .hero-content {
+        margin-top: 84px;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+      }
+
+      .section {
+        padding-right: 18px;
+        padding-left: 18px;
       }
     }
   </style>
 </head>
 
 <body>
+  <header class="site-header">
+    <a
+      class="header-logo-link"
+      href="#top"
+      aria-label="Charleston Polo Club home"
+    >
+      <img
+        src="crest.png"
+        class="logo"
+        alt="Charleston Polo Club Crest"
+      />
+    </a>
 
-  <header>
-    <img src="crest.png" class="logo" alt="Charleston Polo Club Crest" />
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#founding-patrons">
+        Founding Patrons
+      </a>
 
-    <nav>
-      <a href="#">Founding Patrons</a>
-      <a href="#">Inquire</a>
-      <a href="#">Shop</a>
+      <a href="mailto:CharlestonPoloinfo@gmail.com">
+        Inquire
+      </a>
+
+      <a href="#">
+        Shop
+      </a>
     </nav>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <img src="crest.png" class="hero-crest" alt="Charleston Polo Club Crest" />
-      <div class="quote">
-        “Let others play at other things<br>
-        The King of Games is still the<br>
-        Game of Kings”
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-media" aria-hidden="true">
+        <img
+          src="hero.jpg"
+          class="hero-image"
+          alt=""
+        />
       </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="section-inner">
-      <h1>CHARLESTON POLO CLUB</h1>
+      <div class="hero-content">
+        <img
+          src="crest.png"
+          class="hero-crest"
+          alt="Charleston Polo Club Crest"
+        />
 
-      <ul>
-        <li>Beginner Instruction - Embark on your polo journey with our polo schooling sessions.</li>
-        <li>Hire our Equine Companions for Practice Chukkers and Games</li>
-        <li>CPC Coached League - claim your number in our coached league this season and enjoy the King of Games.</li>
-      </ul>
+        <blockquote class="quote">
+          <span class="quote-line">
+            “Let others play at other things
+          </span>
 
-      <p class="bold-copy">
-        Participation necessitates no previous experience and includes all necessary equipment and gear, along with an experienced horse for your learning journey.
-      </p>
-    </div>
-  </section>
+          <span class="quote-line">
+            The King of Games is still the
+          </span>
 
+          <span class="quote-line">
+            Game of Kings”
+          </span>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="section" id="founding-patrons">
+      <div class="section-inner">
+        <h1>
+          Charleston Polo Club
+        </h1>
+
+        <ul class="services">
+          <li>
+            Beginner Instruction — embark on your polo journey with our polo
+            schooling sessions.
+          </li>
+
+          <li>
+            Hire our equine companions for practice chukkers and games.
+          </li>
+
+          <li>
+            CPC Coached League — claim your number in our coached league this
+            season and enjoy the King of Games.
+          </li>
+        </ul>
+
+        <p class="bold-copy">
+          Participation necessitates no previous experience and includes all
+          necessary equipment and gear, along with an experienced horse for
+          your learning journey.
+        </p>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
