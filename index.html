@@ -28,8 +28,6 @@
       --blue: #18345d;
       --blue-deep: #0d2342;
       --blue-dark: #09192f;
-      --blue-soft: #244a7a;
-
       --blue-pale: #dbe7f3;
       --blue-muted: #afc4d9;
 
@@ -77,6 +75,10 @@
       line-height: 1.6;
     }
 
+    body.menu-open {
+      overflow: hidden;
+    }
+
     img {
       display: block;
       max-width: 100%;
@@ -84,6 +86,10 @@
 
     a {
       color: inherit;
+    }
+
+    button {
+      font: inherit;
     }
 
     ::selection {
@@ -97,7 +103,7 @@
 
     .site-header {
       position: absolute;
-      z-index: 20;
+      z-index: 30;
       top: 0;
       right: 0;
       left: 0;
@@ -123,6 +129,9 @@
     }
 
     .header-identity {
+      position: relative;
+      z-index: 35;
+
       display: flex;
       min-width: 0;
 
@@ -220,6 +229,77 @@
       transform: scaleX(1);
     }
 
+    .menu-toggle {
+      position: relative;
+      z-index: 35;
+
+      display: none;
+      width: 46px;
+      height: 46px;
+      padding: 0;
+
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(235, 202, 123, 0.64);
+      border-radius: 0;
+      background: rgba(7, 20, 38, 0.44);
+      color: var(--gold-light);
+
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .menu-toggle-lines {
+      position: relative;
+
+      display: block;
+      width: 21px;
+      height: 14px;
+    }
+
+    .menu-toggle-line {
+      position: absolute;
+      left: 0;
+
+      display: block;
+      width: 100%;
+      height: 1px;
+
+      background: currentColor;
+
+      transition:
+        top 180ms ease,
+        transform 180ms ease,
+        opacity 180ms ease;
+    }
+
+    .menu-toggle-line:nth-child(1) {
+      top: 0;
+    }
+
+    .menu-toggle-line:nth-child(2) {
+      top: 6px;
+    }
+
+    .menu-toggle-line:nth-child(3) {
+      top: 12px;
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(1) {
+      top: 6px;
+      transform: rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(3) {
+      top: 6px;
+      transform: rotate(-45deg);
+    }
+
     /* ---------------------------------
        Hero
     --------------------------------- */
@@ -235,13 +315,6 @@
 
       isolation: isolate;
     }
-
-    /*
-      The landscape image determines the hero height.
-
-      The complete image remains visible at every width.
-      It is never cropped or forced into a fixed-height frame.
-    */
 
     .hero-image {
       display: block;
@@ -317,11 +390,6 @@
 
       color: var(--gold-light);
 
-      /*
-        Keeps the full title on one line while scaling it
-        to match the available screen width.
-      */
-
       font-size: clamp(1.55rem, 5.2vw, 3.65rem);
       font-weight: 400;
       letter-spacing: clamp(0.045em, 0.7vw, 0.11em);
@@ -332,6 +400,7 @@
 
     .quote {
       max-width: 700px;
+
       margin:
         clamp(42px, 6vw, 68px)
         auto
@@ -692,17 +761,7 @@
     }
 
     /* ---------------------------------
-       Tablet
-    --------------------------------- */
-
-    @media (max-width: 900px) {
-      .header-wordmark-sub {
-        display: none;
-      }
-    }
-
-    /* ---------------------------------
-       Mobile
+       Mobile navigation
     --------------------------------- */
 
     @media (max-width: 700px) {
@@ -712,31 +771,131 @@
 
       .site-header {
         padding:
-          max(17px, env(safe-area-inset-top))
-          17px
-          24px;
+          max(16px, env(safe-area-inset-top))
+          16px
+          22px;
       }
 
       .header-identity {
-        gap: 9px;
+        max-width: calc(100% - 62px);
+        gap: 10px;
       }
 
       .logo {
-        width: 42px;
+        width: 41px;
+      }
+
+      .header-wordmark {
+        display: flex;
       }
 
       .header-wordmark-main {
-        font-size: 0.73rem;
-        letter-spacing: 0.1em;
+        overflow: hidden;
+
+        font-size: clamp(0.68rem, 3.6vw, 0.84rem);
+        letter-spacing: 0.09em;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .header-wordmark-sub {
+        display: block;
+
+        margin-top: 5px;
+
+        font-size: 0.52rem;
+        letter-spacing: 0.11em;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        flex: 0 0 auto;
       }
 
       .site-nav {
-        gap: 12px;
+        position: fixed;
+        z-index: 30;
+        top: 0;
+        right: 0;
+
+        display: flex;
+        width: min(82vw, 330px);
+        height: 100svh;
+        padding:
+          max(105px, calc(env(safe-area-inset-top) + 90px))
+          34px
+          48px;
+
+        align-items: stretch;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0;
+
+        background:
+          linear-gradient(
+            180deg,
+            rgba(7, 21, 40, 0.99),
+            rgba(10, 29, 55, 0.99)
+          );
+
+        border-left: 1px solid rgba(235, 202, 123, 0.34);
+
+        box-shadow:
+          -24px 0 70px rgba(0, 0, 0, 0.42);
+
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(100%);
+
+        transition:
+          opacity 220ms ease,
+          transform 220ms ease;
+      }
+
+      .site-nav.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
       }
 
       .site-nav a {
-        font-size: 0.64rem;
-        letter-spacing: 0.08em;
+        display: block;
+        padding: 18px 0;
+
+        border-bottom: 1px solid rgba(219, 231, 243, 0.14);
+
+        color: var(--gold-light);
+
+        font-size: 0.86rem;
+        letter-spacing: 0.17em;
+        text-align: left;
+      }
+
+      .site-nav a::after {
+        display: none;
+      }
+
+      .menu-backdrop {
+        position: fixed;
+        z-index: 25;
+        inset: 0;
+
+        display: block;
+
+        background: rgba(3, 10, 20, 0.62);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+
+        opacity: 0;
+        pointer-events: none;
+
+        transition: opacity 220ms ease;
+      }
+
+      .menu-backdrop.is-open {
+        opacity: 1;
+        pointer-events: auto;
       }
 
       .section-title {
@@ -763,23 +922,34 @@
       }
     }
 
-    /* ---------------------------------
-       Narrow phones
-    --------------------------------- */
-
     @media (max-width: 430px) {
-      .header-wordmark {
-        display: none;
+      .site-header {
+        padding-right: 14px;
+        padding-left: 14px;
       }
 
-      .site-nav {
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        row-gap: 7px;
+      .header-identity {
+        max-width: calc(100% - 58px);
+        gap: 8px;
       }
 
-      .site-nav a {
-        font-size: 0.59rem;
+      .logo {
+        width: 38px;
+      }
+
+      .header-wordmark-main {
+        font-size: clamp(0.62rem, 3.5vw, 0.76rem);
+        letter-spacing: 0.07em;
+      }
+
+      .header-wordmark-sub {
+        font-size: 0.47rem;
+        letter-spacing: 0.09em;
+      }
+
+      .menu-toggle {
+        width: 43px;
+        height: 43px;
       }
 
       .intro,
@@ -838,7 +1008,25 @@
       </span>
     </a>
 
-    <nav class="site-nav" aria-label="Primary navigation">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-controls="site-navigation"
+      aria-expanded="false"
+    >
+      <span class="menu-toggle-lines" aria-hidden="true">
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+      </span>
+    </button>
+
+    <nav
+      class="site-nav"
+      id="site-navigation"
+      aria-label="Primary navigation"
+    >
       <a href="#founding-patrons">
         Founding Patrons
       </a>
@@ -852,6 +1040,8 @@
       </a>
     </nav>
   </header>
+
+  <div class="menu-backdrop" aria-hidden="true"></div>
 
   <main>
     <section class="hero" id="top">
@@ -991,5 +1181,53 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const siteNav = document.querySelector(".site-nav");
+    const menuBackdrop = document.querySelector(".menu-backdrop");
+    const menuLinks = document.querySelectorAll(".site-nav a");
+
+    function setMenuState(isOpen) {
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation" : "Open navigation"
+      );
+
+      siteNav.classList.toggle("is-open", isOpen);
+      menuBackdrop.classList.toggle("is-open", isOpen);
+      document.body.classList.toggle("menu-open", isOpen);
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen =
+        menuToggle.getAttribute("aria-expanded") === "true";
+
+      setMenuState(!isOpen);
+    });
+
+    menuBackdrop.addEventListener("click", () => {
+      setMenuState(false);
+    });
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        setMenuState(false);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setMenuState(false);
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 700) {
+        setMenuState(false);
+      }
+    });
+  </script>
 </body>
 </html>
