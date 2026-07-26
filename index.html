@@ -96,7 +96,7 @@
     }
 
     /* ---------------------------------
-       Sticky header
+       Header
     --------------------------------- */
 
     .site-header {
@@ -119,16 +119,13 @@
       background:
         linear-gradient(
           180deg,
-          rgba(88, 126, 166, 0.25) 0%,
-          rgba(41, 76, 116, 0.25) 38%,
-          rgba(9, 32, 68, 0.25) 72%,
-          rgba(0, 13, 36, 0.25) 100%
+          rgba(67, 101, 139, 0.9) 0%,
+          rgba(29, 63, 103, 0.92) 40%,
+          rgba(9, 35, 72, 0.94) 72%,
+          rgba(2, 19, 45, 0.96) 100%
         );
 
       border: 0;
-
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
 
       transition:
         min-height 180ms ease,
@@ -146,14 +143,14 @@
       background:
         linear-gradient(
           180deg,
-          rgba(88, 126, 166, 0.25) 0%,
-          rgba(41, 76, 116, 0.25) 38%,
-          rgba(9, 32, 68, 0.25) 72%,
-          rgba(0, 13, 36, 0.25) 100%
+          rgba(55, 88, 126, 0.96) 0%,
+          rgba(23, 55, 94, 0.97) 42%,
+          rgba(6, 29, 64, 0.98) 74%,
+          rgba(1, 15, 37, 0.99) 100%
         );
 
       box-shadow:
-        0 10px 28px rgba(0, 5, 18, 0.18);
+        0 10px 28px rgba(0, 5, 18, 0.2);
     }
 
     .header-identity {
@@ -458,14 +455,14 @@
     }
 
     /* ---------------------------------
-       Inquiry
+       Cowboy Polo Circuit card
     --------------------------------- */
 
-    .inquiry {
+    .cowboy-gateway {
       padding:
-        clamp(54px, 6vw, 78px)
-        clamp(20px, 5vw, 58px)
-        clamp(78px, 10vw, 124px);
+        clamp(72px, 9vw, 118px)
+        clamp(18px, 5vw, 58px)
+        clamp(78px, 9vw, 116px);
 
       background:
         linear-gradient(
@@ -473,8 +470,168 @@
           #0d2a52 0%,
           #092247 28%,
           #061b39 58%,
-          #03152f 80%,
-          #000d24 100%
+          #03152f 82%,
+          #00102f 100%
+        );
+
+      border: 0;
+    }
+
+    .cowboy-card {
+      position: relative;
+
+      width: min(100%, 760px);
+      margin: 0 auto;
+      overflow: hidden;
+
+      padding:
+        clamp(44px, 6vw, 68px)
+        clamp(24px, 6vw, 62px);
+
+      background:
+        linear-gradient(
+          150deg,
+          rgba(35, 74, 118, 0.92) 0%,
+          rgba(17, 48, 89, 0.95) 42%,
+          rgba(5, 26, 56, 0.98) 100%
+        );
+
+      border: 1px solid rgba(193, 208, 223, 0.15);
+
+      box-shadow:
+        0 28px 76px rgba(0, 4, 15, 0.4),
+        inset 0 1px 0 rgba(238, 243, 247, 0.06);
+
+      text-align: center;
+    }
+
+    .cowboy-card::before {
+      position: absolute;
+      top: -130px;
+      left: 50%;
+
+      width: 440px;
+      height: 270px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(156, 178, 200, 0.16) 0%,
+          rgba(156, 178, 200, 0) 70%
+        );
+
+      content: "";
+      pointer-events: none;
+      transform: translateX(-50%);
+    }
+
+    .cowboy-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cowboy-kicker {
+      margin: 0 0 16px;
+
+      color: var(--blue-mist);
+
+      font-size: clamp(0.56rem, 0.82vw, 0.67rem);
+      font-weight: 600;
+      letter-spacing: 0.29em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .cowboy-title {
+      margin: 0 0 26px;
+
+      color: var(--white-blue);
+
+      font-size: clamp(1.85rem, 4vw, 3.15rem);
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .cowboy-copy {
+      max-width: 610px;
+
+      margin:
+        0
+        auto
+        34px;
+
+      color: var(--blue-cloud);
+
+      font-size: clamp(1rem, 1.7vw, 1.2rem);
+      line-height: 1.6;
+    }
+
+    .cowboy-link {
+      display: inline-flex;
+
+      width: max-content;
+      max-width: 100%;
+      min-height: 44px;
+      padding: 11px 24px;
+
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+
+      border: 1px solid var(--blue-cloud);
+      background: transparent;
+      color: var(--white-blue);
+
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.19em;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+      white-space: nowrap;
+
+      transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
+    }
+
+    .cowboy-link::after {
+      content: "→";
+
+      font-size: 0.96rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .cowboy-link:hover,
+    .cowboy-link:focus-visible {
+      background: var(--blue-cloud);
+      border-color: var(--blue-cloud);
+      color: var(--blue-black);
+      transform: translateY(-2px);
+    }
+
+    /* ---------------------------------
+       Final inquiry section
+    --------------------------------- */
+
+    .inquiry {
+      padding:
+        clamp(72px, 8vw, 104px)
+        clamp(20px, 5vw, 58px)
+        clamp(90px, 11vw, 138px);
+
+      background:
+        linear-gradient(
+          180deg,
+          #00102f 0%,
+          #000d24 34%,
+          #000a1d 66%,
+          #00050f 100%
         );
 
       text-align: center;
@@ -571,166 +728,6 @@
     .button-outline:focus-visible {
       background: var(--blue-cloud);
       color: var(--blue-deepest);
-    }
-
-    /* ---------------------------------
-       Cowboy Polo Circuit
-    --------------------------------- */
-
-    .cowboy-gateway {
-      padding:
-        clamp(72px, 9vw, 118px)
-        clamp(18px, 5vw, 58px)
-        clamp(86px, 10vw, 136px);
-
-      background:
-        linear-gradient(
-          180deg,
-          #000d24 0%,
-          #000a1d 38%,
-          #000816 72%,
-          #00050f 100%
-        );
-
-      border: 0;
-    }
-
-    .cowboy-card {
-      position: relative;
-
-      width: min(100%, 760px);
-      margin: 0 auto;
-      overflow: hidden;
-
-      padding:
-        clamp(44px, 6vw, 68px)
-        clamp(24px, 6vw, 62px);
-
-      background:
-        linear-gradient(
-          150deg,
-          rgba(27, 63, 104, 0.82) 0%,
-          rgba(12, 39, 78, 0.9) 42%,
-          rgba(3, 21, 47, 0.96) 100%
-        );
-
-      border: 1px solid rgba(193, 208, 223, 0.15);
-
-      box-shadow:
-        0 28px 76px rgba(0, 4, 15, 0.4),
-        inset 0 1px 0 rgba(238, 243, 247, 0.06);
-
-      text-align: center;
-    }
-
-    .cowboy-card::before {
-      position: absolute;
-      top: -120px;
-      left: 50%;
-
-      width: 420px;
-      height: 250px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(113, 139, 167, 0.16) 0%,
-          rgba(113, 139, 167, 0) 70%
-        );
-
-      content: "";
-      pointer-events: none;
-      transform: translateX(-50%);
-    }
-
-    .cowboy-card-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .cowboy-kicker {
-      margin: 0 0 16px;
-
-      color: var(--blue-mist);
-
-      font-size: clamp(0.56rem, 0.82vw, 0.67rem);
-      font-weight: 600;
-      letter-spacing: 0.29em;
-      line-height: 1.3;
-      text-transform: uppercase;
-    }
-
-    .cowboy-title {
-      margin: 0 0 26px;
-
-      color: var(--white-blue);
-
-      font-size: clamp(1.85rem, 4vw, 3.15rem);
-      font-weight: 400;
-      letter-spacing: 0.07em;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .cowboy-copy {
-      max-width: 610px;
-
-      margin:
-        0
-        auto
-        34px;
-
-      color: var(--blue-cloud);
-
-      font-size: clamp(1rem, 1.7vw, 1.2rem);
-      line-height: 1.6;
-    }
-
-    .cowboy-link {
-      display: inline-flex;
-
-      width: max-content;
-      max-width: 100%;
-      min-height: 44px;
-      padding: 11px 24px;
-
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-
-      border: 1px solid var(--blue-cloud);
-      background: transparent;
-      color: var(--white-blue);
-
-      font-size: 0.66rem;
-      font-weight: 600;
-      letter-spacing: 0.19em;
-      line-height: 1;
-      text-decoration: none;
-      text-transform: uppercase;
-      white-space: nowrap;
-
-      transition:
-        background 180ms ease,
-        border-color 180ms ease,
-        color 180ms ease,
-        transform 180ms ease;
-    }
-
-    .cowboy-link::after {
-      content: "→";
-
-      font-size: 0.96rem;
-      font-weight: 400;
-      line-height: 1;
-    }
-
-    .cowboy-link:hover,
-    .cowboy-link:focus-visible {
-      background: var(--blue-cloud);
-      border-color: var(--blue-cloud);
-      color: var(--blue-black);
-      transform: translateY(-2px);
     }
 
     /* ---------------------------------
@@ -999,8 +996,8 @@
       }
 
       .intro,
-      .inquiry,
-      .cowboy-gateway {
+      .cowboy-gateway,
+      .inquiry {
         padding-right: 16px;
         padding-left: 16px;
       }
@@ -1135,40 +1132,6 @@
       </div>
     </section>
 
-    <section class="inquiry" id="inquire">
-      <div class="inquiry-inner">
-        <p class="section-kicker">
-          Membership · Instruction · Patronage
-        </p>
-
-        <h2 class="inquiry-title">
-          Enter the King of Games
-        </h2>
-
-        <p class="inquiry-copy">
-          Charleston Polo welcomes founding patrons, landholders, and
-          potential partners interested in restoring a lasting polo tradition
-          in the Lowcountry.
-        </p>
-
-        <div class="button-row">
-          <a
-            class="button"
-            href="mailto:CharlestonPoloinfo@gmail.com?subject=Charleston%20Polo%20Inquiry"
-          >
-            Make an Inquiry
-          </a>
-
-          <a
-            class="button button-outline"
-            href="mailto:CharlestonPoloinfo@gmail.com?subject=Founding%20Patron%20Inquiry"
-          >
-            Founding Patrons
-          </a>
-        </div>
-      </div>
-    </section>
-
     <section
       class="cowboy-gateway"
       aria-label="Cowboy Polo Circuit"
@@ -1201,6 +1164,40 @@
           </a>
         </div>
       </article>
+    </section>
+
+    <section class="inquiry" id="inquire">
+      <div class="inquiry-inner">
+        <p class="section-kicker">
+          Membership · Instruction · Patronage
+        </p>
+
+        <h2 class="inquiry-title">
+          Enter the King of Games
+        </h2>
+
+        <p class="inquiry-copy">
+          Charleston Polo welcomes founding patrons, landholders, and
+          potential partners interested in restoring a lasting polo tradition
+          in the Lowcountry.
+        </p>
+
+        <div class="button-row">
+          <a
+            class="button"
+            href="mailto:CharlestonPoloinfo@gmail.com?subject=Charleston%20Polo%20Inquiry"
+          >
+            Make an Inquiry
+          </a>
+
+          <a
+            class="button button-outline"
+            href="mailto:CharlestonPoloinfo@gmail.com?subject=Founding%20Patron%20Inquiry"
+          >
+            Founding Patrons
+          </a>
+        </div>
+      </div>
     </section>
   </main>
 
