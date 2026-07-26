@@ -30,7 +30,6 @@
       --blue-deep: #0b2852;
       --blue: #173d70;
       --blue-panel: #244b7e;
-      --blue-mid: #4f76a5;
 
       --blue-muted: #7697bd;
       --blue-mist: #a6bad2;
@@ -130,7 +129,6 @@
       transition:
         min-height 180ms ease,
         padding 180ms ease,
-        background 180ms ease,
         box-shadow 180ms ease;
     }
 
@@ -139,8 +137,6 @@
 
       padding-top: 8px;
       padding-bottom: 8px;
-
-      background: rgba(0, 16, 47, 0.25);
 
       box-shadow:
         0 10px 28px rgba(0, 8, 28, 0.16);
@@ -213,6 +209,7 @@
 
     .site-nav {
       display: flex;
+
       align-items: center;
       justify-content: flex-end;
       gap: clamp(18px, 2.5vw, 34px);
@@ -361,9 +358,6 @@
 
     /* ---------------------------------
        Introduction
-
-       Dark beneath the hero, rising into
-       a restrained colonial blue.
     --------------------------------- */
 
     .intro {
@@ -465,9 +459,6 @@
 
     /* ---------------------------------
        Inquiry
-
-       Begins at the same restrained blue
-       and descends back into deep navy.
     --------------------------------- */
 
     .inquiry {
@@ -521,6 +512,7 @@
 
     .button-row {
       display: flex;
+
       align-items: center;
       flex-wrap: wrap;
       justify-content: center;
@@ -571,164 +563,6 @@
     .button-outline:focus-visible {
       background: var(--blue-cloud);
       color: var(--blue-deepest);
-    }
-
-    /* ---------------------------------
-       Cowboy Polo full-width image hero
-    --------------------------------- */
-
-    .cowboy-hero {
-      position: relative;
-
-      width: 100%;
-      overflow: hidden;
-
-      background: var(--blue-black);
-      border-top: 1px solid var(--line-soft);
-      border-bottom: 1px solid var(--line-soft);
-
-      isolation: isolate;
-    }
-
-    .cowboy-hero-image {
-      display: block;
-
-      width: 100%;
-      height: auto;
-      max-width: none;
-    }
-
-    .cowboy-hero-shade {
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(0, 16, 47, 0.08) 0%,
-          rgba(0, 16, 47, 0.12) 40%,
-          rgba(0, 16, 47, 0.5) 100%
-        ),
-        linear-gradient(
-          90deg,
-          rgba(0, 16, 47, 0.28) 0%,
-          transparent 34%,
-          transparent 66%,
-          rgba(0, 16, 47, 0.25) 100%
-        );
-
-      pointer-events: none;
-    }
-
-    .cowboy-hero-inner {
-      position: absolute;
-      z-index: 2;
-
-      right: 0;
-      bottom: clamp(28px, 7vw, 104px);
-      left: 0;
-
-      width: min(90%, 760px);
-      margin: 0 auto;
-      padding: 0 clamp(16px, 4vw, 44px);
-
-      text-align: center;
-    }
-
-    .cowboy-kicker {
-      margin: 0 0 clamp(8px, 1.2vw, 15px);
-
-      color: var(--blue-cloud);
-
-      font-size: clamp(0.55rem, 0.85vw, 0.68rem);
-      font-weight: 600;
-      letter-spacing: 0.31em;
-      line-height: 1.2;
-      text-shadow:
-        0 2px 10px rgba(0, 8, 25, 0.9);
-      text-transform: uppercase;
-    }
-
-    .cowboy-title {
-      margin: 0 0 clamp(10px, 1.8vw, 22px);
-
-      color: var(--white-blue);
-
-      font-size: clamp(2rem, 5.7vw, 4.7rem);
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      line-height: 0.95;
-      text-shadow:
-        0 3px 16px rgba(0, 8, 25, 0.92);
-      text-transform: uppercase;
-    }
-
-    .cowboy-copy {
-      max-width: 610px;
-
-      margin:
-        0
-        auto
-        clamp(15px, 2.5vw, 30px);
-
-      color: var(--white-blue);
-
-      font-size: clamp(0.95rem, 1.8vw, 1.3rem);
-      font-style: italic;
-      line-height: 1.45;
-      text-shadow:
-        0 2px 12px rgba(0, 8, 25, 0.94);
-    }
-
-    .cowboy-link {
-      display: inline-flex;
-
-      min-height: 43px;
-      padding: 11px 24px;
-
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-
-      border: 1px solid rgba(238, 243, 247, 0.78);
-      background: rgba(0, 16, 47, 0.3);
-      color: var(--white-blue);
-
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.19em;
-      line-height: 1;
-      text-decoration: none;
-      text-shadow:
-        0 2px 8px rgba(0, 8, 25, 0.84);
-      text-transform: uppercase;
-
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-
-      transition:
-        background 180ms ease,
-        border-color 180ms ease,
-        color 180ms ease,
-        transform 180ms ease;
-    }
-
-    .cowboy-link::after {
-      content: "→";
-
-      font-size: 0.96rem;
-      font-weight: 400;
-      line-height: 1;
-    }
-
-    .cowboy-link:hover,
-    .cowboy-link:focus-visible {
-      background: var(--white-blue);
-      border-color: var(--white-blue);
-      color: var(--blue-black);
-      text-shadow: none;
-      transform: translateY(-2px);
     }
 
     /* ---------------------------------
@@ -942,38 +776,6 @@
         width: 100%;
       }
 
-      .cowboy-hero-inner {
-        bottom: clamp(8px, 3.5vw, 20px);
-        width: 96%;
-        padding: 0 10px;
-      }
-
-      .cowboy-kicker {
-        margin-bottom: 5px;
-        font-size: clamp(0.4rem, 1.8vw, 0.54rem);
-        letter-spacing: 0.22em;
-      }
-
-      .cowboy-title {
-        margin-bottom: 6px;
-        font-size: clamp(1.2rem, 7vw, 2rem);
-      }
-
-      .cowboy-copy {
-        max-width: 92%;
-        margin-bottom: 9px;
-
-        font-size: clamp(0.62rem, 3.1vw, 0.9rem);
-        line-height: 1.25;
-      }
-
-      .cowboy-link {
-        min-height: 30px;
-        padding: 7px 14px;
-
-        font-size: clamp(0.45rem, 1.8vw, 0.58rem);
-      }
-
       .footer-inner {
         flex-direction: column;
         gap: 13px;
@@ -1013,27 +815,6 @@
       .section-title {
         font-size: clamp(1.08rem, 5.75vw, 1.5rem);
         letter-spacing: 0.012em;
-      }
-
-      .cowboy-hero-inner {
-        bottom: 5px;
-      }
-
-      .cowboy-kicker {
-        display: none;
-      }
-
-      .cowboy-title {
-        font-size: clamp(1rem, 6.5vw, 1.5rem);
-      }
-
-      .cowboy-copy {
-        font-size: clamp(0.54rem, 2.8vw, 0.72rem);
-      }
-
-      .cowboy-link {
-        min-height: 27px;
-        padding: 6px 11px;
       }
     }
 
@@ -1184,44 +965,6 @@
             Founding Patrons
           </a>
         </div>
-      </div>
-    </section>
-
-    <section
-      class="cowboy-hero"
-      aria-label="Cowboy Polo Circuit"
-    >
-      <img
-        src="cowboyfooter.jpg"
-        class="cowboy-hero-image"
-        alt="Cowboy Polo players under stadium lights"
-      />
-
-      <div
-        class="cowboy-hero-shade"
-        aria-hidden="true"
-      ></div>
-
-      <div class="cowboy-hero-inner">
-        <p class="cowboy-kicker">
-          The Development Circuit
-        </p>
-
-        <h2 class="cowboy-title">
-          Cowboy Polo
-        </h2>
-
-        <p class="cowboy-copy">
-          Discover the American development circuit where new riders learn,
-          horses are made, and the next generation enters the game.
-        </p>
-
-        <a
-          class="cowboy-link"
-          href="https://cowboypolo.com"
-        >
-          Visit Cowboy Polo
-        </a>
       </div>
     </section>
   </main>
