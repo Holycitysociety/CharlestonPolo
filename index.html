@@ -40,9 +40,6 @@
       --gold: #c69a3c;
       --gold-light: #dfbf72;
 
-      --line: rgba(193, 208, 223, 0.14);
-      --line-soft: rgba(193, 208, 223, 0.08);
-
       --page-width: 1120px;
       --copy-width: 760px;
     }
@@ -100,9 +97,6 @@
 
     /* ---------------------------------
        Sticky header
-
-       Light translucent blue at the top,
-       descending into dark navy below.
     --------------------------------- */
 
     .site-header {
@@ -131,7 +125,7 @@
           rgba(0, 13, 36, 0.25) 100%
         );
 
-      border-bottom: 1px solid var(--line-soft);
+      border: 0;
 
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
@@ -365,7 +359,7 @@
       overflow: hidden;
 
       background: var(--blue-black);
-      border-bottom: 1px solid var(--line-soft);
+      border: 0;
     }
 
     .hero-image {
@@ -517,17 +511,23 @@
     }
 
     .button-row {
-      display: flex;
+      display: inline-grid;
 
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
+      width: max-content;
+      max-width: 100%;
+
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
       gap: 12px;
+
+      align-items: stretch;
+      justify-content: center;
     }
 
     .button {
       display: inline-flex;
 
+      width: 100%;
       min-height: 46px;
       padding: 12px 25px;
 
@@ -542,8 +542,10 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       line-height: 1;
+      text-align: center;
       text-decoration: none;
       text-transform: uppercase;
+      white-space: nowrap;
 
       transition:
         background 180ms ease,
@@ -572,7 +574,7 @@
     }
 
     /* ---------------------------------
-       Cowboy Polo text gateway
+       Cowboy Polo history and revival
     --------------------------------- */
 
     .cowboy-gateway {
@@ -590,14 +592,13 @@
           #00050f 100%
         );
 
-      border-top: 1px solid rgba(193, 208, 223, 0.07);
-      border-bottom: 1px solid rgba(193, 208, 223, 0.07);
+      border: 0;
 
       text-align: center;
     }
 
     .cowboy-gateway-inner {
-      width: min(100%, 720px);
+      width: min(100%, 760px);
       margin: 0 auto;
     }
 
@@ -614,7 +615,7 @@
     }
 
     .cowboy-title {
-      margin: 0 0 22px;
+      margin: 0 0 26px;
 
       color: var(--white-blue);
 
@@ -625,24 +626,38 @@
       text-transform: uppercase;
     }
 
-    .cowboy-copy {
-      max-width: 600px;
+    .cowboy-history {
+      max-width: 660px;
+      margin: 0 auto 34px;
+    }
 
-      margin:
-        0
-        auto
-        30px;
+    .cowboy-copy {
+      margin: 0;
 
       color: var(--blue-pale);
 
       font-size: clamp(1rem, 1.7vw, 1.22rem);
+      line-height: 1.58;
+    }
+
+    .cowboy-copy + .cowboy-copy {
+      margin-top: 22px;
+    }
+
+    .cowboy-copy-origin {
+      color: var(--blue-cloud);
+    }
+
+    .cowboy-copy-revival {
+      color: var(--blue-pale);
       font-style: italic;
-      line-height: 1.52;
     }
 
     .cowboy-link {
       display: inline-flex;
 
+      width: max-content;
+      max-width: 100%;
       min-height: 44px;
       padding: 11px 24px;
 
@@ -660,6 +675,7 @@
       line-height: 1;
       text-decoration: none;
       text-transform: uppercase;
+      white-space: nowrap;
 
       transition:
         background 180ms ease,
@@ -696,6 +712,8 @@
 
       background: #00050f;
       color: rgba(156, 178, 200, 0.58);
+
+      border: 0;
 
       text-align: center;
     }
@@ -815,7 +833,7 @@
             rgba(3, 21, 47, 0.995) 100%
           );
 
-        border-left: 1px solid var(--line);
+        border: 0;
 
         box-shadow:
           -22px 0 62px rgba(0, 5, 18, 0.44);
@@ -840,13 +858,17 @@
 
         padding: 16px 0;
 
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid rgba(193, 208, 223, 0.12);
 
         color: var(--gold-light);
 
         font-size: 0.76rem;
         letter-spacing: 0.16em;
         text-align: left;
+      }
+
+      .site-nav a:last-child {
+        border-bottom: 0;
       }
 
       .site-nav a::after {
@@ -889,20 +911,32 @@
       }
 
       .button-row {
-        align-items: stretch;
-        flex-direction: column;
+        grid-auto-flow: row;
+        grid-auto-rows: 1fr;
+        grid-template-columns: max-content;
+
+        width: max-content;
+        max-width: 100%;
+
+        margin: 0 auto;
       }
 
       .button {
         width: 100%;
+        max-width: 100%;
       }
 
       .cowboy-title {
         font-size: clamp(1.7rem, 9vw, 2.4rem);
       }
 
+      .cowboy-history {
+        max-width: 620px;
+      }
+
       .cowboy-link {
-        width: 100%;
+        width: max-content;
+        max-width: 100%;
       }
 
       .footer-inner {
@@ -945,6 +979,11 @@
       .section-title {
         font-size: clamp(1.08rem, 5.75vw, 1.5rem);
         letter-spacing: 0.012em;
+      }
+
+      .button {
+        padding-right: 20px;
+        padding-left: 20px;
       }
     }
 
@@ -1050,7 +1089,7 @@
           </span>
 
           <footer class="quote-attribution">
-          
+            Thomas Osbert Mordaunt
           </footer>
         </blockquote>
       </div>
@@ -1092,27 +1131,39 @@
 
     <section
       class="cowboy-gateway"
-      aria-label="Cowboy Polo Circuit"
+      aria-label="Cowboy Polo history and circuit"
     >
       <div class="cowboy-gateway-inner">
         <p class="cowboy-kicker">
-          The Development Circuit
+          Palmetto Polo · Founded 1952
         </p>
 
         <h2 class="cowboy-title">
           Cowboy Polo
         </h2>
 
-        <p class="cowboy-copy">
-          Discover the American development circuit where new riders learn,
-          horses are made, and the next generation enters the game.
-        </p>
+        <div class="cowboy-history">
+          <p class="cowboy-copy cowboy-copy-origin">
+            Born in New Smyrna Beach, Florida, in 1952 as Palmetto Polo,
+            the game adapted polo for Western riders through arena play,
+            Western tack, a larger ball, and palm-handled mallets. Renamed
+            Cowboy Polo in 1959, it spread west through mounted posses and
+            local riding clubs.
+          </p>
+
+          <p class="cowboy-copy cowboy-copy-revival">
+            As its 75th anniversary approaches in 2027, the Cowboy Polo
+            Circuit is reviving that Southern-born tradition—not as a museum
+            piece, but as a practical American pathway for new riders,
+            adaptable horses, and local competition.
+          </p>
+        </div>
 
         <a
           class="cowboy-link"
           href="https://cowboypolo.com"
         >
-          Visit Cowboy Polo
+          Explore Cowboy Polo
         </a>
       </div>
     </section>
