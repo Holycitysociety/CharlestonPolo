@@ -362,8 +362,8 @@
     /* ---------------------------------
        Introduction
 
-       Deep navy at both ends, rising into
-       the brighter blue through the center.
+       Starts dark beneath the hero and
+       rises continuously into light blue.
     --------------------------------- */
 
     .intro {
@@ -376,12 +376,10 @@
         linear-gradient(
           180deg,
           #061b3c 0%,
-          #0b2852 16%,
-          #173d70 33%,
-          #244b7e 50%,
-          #173d70 67%,
-          #0b2852 84%,
-          #061b3c 100%
+          #0b2852 24%,
+          #173d70 54%,
+          #244b7e 78%,
+          #4f76a5 100%
         );
 
       text-align: center;
@@ -443,7 +441,7 @@
 
       margin-top: 14px;
 
-      color: var(--blue-mist);
+      color: var(--blue-pale);
 
       font-size: clamp(0.52rem, 0.7vw, 0.64rem);
       font-style: normal;
@@ -460,7 +458,7 @@
         auto
         0;
 
-      color: var(--blue-cloud);
+      color: var(--white-blue);
 
       font-size: clamp(1rem, 1.65vw, 1.2rem);
       line-height: 1.58;
@@ -468,6 +466,10 @@
 
     /* ---------------------------------
        Inquiry
+
+       Begins at the same light blue where
+       the introduction ends, then descends
+       continuously back into deep navy.
     --------------------------------- */
 
     .inquiry {
@@ -479,8 +481,11 @@
       background:
         linear-gradient(
           180deg,
-          #061b3c 0%,
-          #031632 58%,
+          #4f76a5 0%,
+          #244b7e 24%,
+          #173d70 48%,
+          #0b2852 72%,
+          #061b3c 88%,
           #00102f 100%
         );
 
@@ -511,7 +516,7 @@
         auto
         34px;
 
-      color: var(--blue-pale);
+      color: var(--blue-cloud);
 
       font-size: clamp(1rem, 1.65vw, 1.18rem);
       line-height: 1.58;
