@@ -129,6 +129,7 @@
       transition:
         min-height 180ms ease,
         padding 180ms ease,
+        background 180ms ease,
         box-shadow 180ms ease;
     }
 
@@ -137,6 +138,8 @@
 
       padding-top: 8px;
       padding-bottom: 8px;
+
+      background: rgba(0, 16, 47, 0.25);
 
       box-shadow:
         0 10px 28px rgba(0, 8, 28, 0.16);
@@ -209,7 +212,6 @@
 
     .site-nav {
       display: flex;
-
       align-items: center;
       justify-content: flex-end;
       gap: clamp(18px, 2.5vw, 34px);
@@ -512,7 +514,6 @@
 
     .button-row {
       display: flex;
-
       align-items: center;
       flex-wrap: wrap;
       justify-content: center;
@@ -563,6 +564,118 @@
     .button-outline:focus-visible {
       background: var(--blue-cloud);
       color: var(--blue-deepest);
+    }
+
+    /* ---------------------------------
+       Cowboy Polo text gateway
+    --------------------------------- */
+
+    .cowboy-gateway {
+      padding:
+        clamp(74px, 9vw, 118px)
+        clamp(20px, 5vw, 58px)
+        clamp(82px, 10vw, 132px);
+
+      background:
+        linear-gradient(
+          180deg,
+          #00102f 0%,
+          #061b3c 48%,
+          #00102f 100%
+        );
+
+      border-top: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
+
+      text-align: center;
+    }
+
+    .cowboy-gateway-inner {
+      width: min(100%, 720px);
+      margin: 0 auto;
+    }
+
+    .cowboy-kicker {
+      margin: 0 0 15px;
+
+      color: var(--blue-muted);
+
+      font-size: clamp(0.56rem, 0.82vw, 0.67rem);
+      font-weight: 600;
+      letter-spacing: 0.31em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .cowboy-title {
+      margin: 0 0 22px;
+
+      color: var(--white-blue);
+
+      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .cowboy-copy {
+      max-width: 600px;
+
+      margin:
+        0
+        auto
+        30px;
+
+      color: var(--blue-pale);
+
+      font-size: clamp(1rem, 1.7vw, 1.22rem);
+      font-style: italic;
+      line-height: 1.52;
+    }
+
+    .cowboy-link {
+      display: inline-flex;
+
+      min-height: 44px;
+      padding: 11px 24px;
+
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+
+      border: 1px solid var(--blue-cloud);
+      background: transparent;
+      color: var(--white-blue);
+
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.19em;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        transform 180ms ease;
+    }
+
+    .cowboy-link::after {
+      content: "→";
+
+      font-size: 0.96rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .cowboy-link:hover,
+    .cowboy-link:focus-visible {
+      background: var(--blue-cloud);
+      border-color: var(--blue-cloud);
+      color: var(--blue-black);
+      transform: translateY(-2px);
     }
 
     /* ---------------------------------
@@ -763,7 +876,8 @@
       }
 
       .intro-copy,
-      .inquiry-copy {
+      .inquiry-copy,
+      .cowboy-copy {
         font-size: 1rem;
       }
 
@@ -773,6 +887,14 @@
       }
 
       .button {
+        width: 100%;
+      }
+
+      .cowboy-title {
+        font-size: clamp(1.7rem, 9vw, 2.4rem);
+      }
+
+      .cowboy-link {
         width: 100%;
       }
 
@@ -807,7 +929,8 @@
       }
 
       .intro,
-      .inquiry {
+      .inquiry,
+      .cowboy-gateway {
         padding-right: 16px;
         padding-left: 16px;
       }
@@ -965,6 +1088,33 @@
             Founding Patrons
           </a>
         </div>
+      </div>
+    </section>
+
+    <section
+      class="cowboy-gateway"
+      aria-label="Cowboy Polo Circuit"
+    >
+      <div class="cowboy-gateway-inner">
+        <p class="cowboy-kicker">
+          The Development Circuit
+        </p>
+
+        <h2 class="cowboy-title">
+          Cowboy Polo
+        </h2>
+
+        <p class="cowboy-copy">
+          Discover the American development circuit where new riders learn,
+          horses are made, and the next generation enters the game.
+        </p>
+
+        <a
+          class="cowboy-link"
+          href="https://cowboypolo.com"
+        >
+          Visit Cowboy Polo
+        </a>
       </div>
     </section>
   </main>
