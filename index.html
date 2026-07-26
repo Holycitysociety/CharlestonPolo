@@ -153,11 +153,6 @@
         0 10px 28px rgba(0, 5, 18, 0.2);
     }
 
-    /*
-      Once the sticky header has completely passed
-      the hero image, it becomes fully opaque.
-    */
-
     .site-header.past-hero,
     .site-header.is-scrolled.past-hero {
       background:
@@ -679,6 +674,13 @@
 
       font-size: clamp(1rem, 1.65vw, 1.18rem);
       line-height: 1.58;
+
+      text-align: justify;
+      text-align-last: left;
+      text-justify: inter-word;
+
+      hyphens: auto;
+      -webkit-hyphens: auto;
     }
 
     .button-row {
@@ -780,12 +782,6 @@
       letter-spacing: 0.18em;
       line-height: 1.45;
       text-transform: uppercase;
-    }
-
-    .footer-separator {
-      color: var(--gold);
-      font-size: 0.8rem;
-      line-height: 1;
     }
 
     /* ---------------------------------
@@ -1038,7 +1034,8 @@
         letter-spacing: 0.012em;
       }
 
-      .cowboy-copy {
+      .cowboy-copy,
+      .inquiry-copy {
         text-align: justify;
         text-align-last: left;
       }
@@ -1229,10 +1226,6 @@
         © 2026 Charleston Polo Club
       </div>
 
-      <div class="footer-separator" aria-hidden="true">
-        ·
-      </div>
-
       <div class="footer-location">
         Charleston · South Carolina
       </div>
@@ -1263,12 +1256,6 @@
 
     function updateStickyHeader() {
       const isScrolled = window.scrollY > 24;
-
-      /*
-        The header becomes fully opaque when its lower edge
-        reaches or passes the lower edge of the hero section.
-      */
-
       const heroBottom = hero.getBoundingClientRect().bottom;
       const headerHeight = siteHeader.getBoundingClientRect().height;
       const hasPassedHero = heroBottom <= headerHeight;
