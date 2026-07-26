@@ -25,11 +25,11 @@
 
   <style>
     :root {
-      --blue-black: #00102f;
+      --blue-black: #000b1c;
+      --blue-ink: #00102f;
       --blue-deepest: #061b3c;
       --blue-deep: #0b2852;
       --blue: #173d70;
-      --blue-panel: #244b7e;
 
       --blue-muted: #7697bd;
       --blue-mist: #a6bad2;
@@ -360,21 +360,24 @@
 
     /* ---------------------------------
        Introduction
+
+       Dark navy into a restrained blue.
+       The former light-blue endpoint has
+       been removed.
     --------------------------------- */
 
     .intro {
       padding:
         clamp(66px, 8vw, 104px)
         clamp(18px, 5vw, 58px)
-        clamp(72px, 9vw, 112px);
+        clamp(66px, 8vw, 100px);
 
       background:
         linear-gradient(
           180deg,
           #061b3c 0%,
-          #0b2852 30%,
-          #173d70 68%,
-          #244b7e 100%
+          #0b2852 44%,
+          #173d70 100%
         );
 
       text-align: center;
@@ -445,37 +448,25 @@
       text-transform: uppercase;
     }
 
-    .intro-copy {
-      max-width: 610px;
-
-      margin:
-        clamp(30px, 4vw, 44px)
-        auto
-        0;
-
-      color: var(--white-blue);
-
-      font-size: clamp(1rem, 1.65vw, 1.2rem);
-      line-height: 1.58;
-    }
-
     /* ---------------------------------
        Inquiry
+
+       Continues from the introduction and
+       descends into ink navy.
     --------------------------------- */
 
     .inquiry {
       padding:
-        clamp(72px, 9vw, 112px)
+        clamp(70px, 8vw, 106px)
         clamp(20px, 5vw, 58px)
         clamp(78px, 10vw, 124px);
 
       background:
         linear-gradient(
           180deg,
-          #244b7e 0%,
-          #173d70 30%,
-          #0b2852 66%,
-          #061b3c 86%,
+          #173d70 0%,
+          #0b2852 38%,
+          #061b3c 72%,
           #00102f 100%
         );
 
@@ -568,24 +559,28 @@
 
     /* ---------------------------------
        Cowboy Polo text gateway
+
+       Blackened blue transition separates
+       this gateway from the main content.
     --------------------------------- */
 
     .cowboy-gateway {
       padding:
-        clamp(74px, 9vw, 118px)
+        clamp(76px, 9vw, 120px)
         clamp(20px, 5vw, 58px)
-        clamp(82px, 10vw, 132px);
+        clamp(84px, 10vw, 134px);
 
       background:
         linear-gradient(
           180deg,
           #00102f 0%,
-          #061b3c 48%,
-          #00102f 100%
+          #000b1c 42%,
+          #020f24 72%,
+          #000816 100%
         );
 
-      border-top: 1px solid var(--line-soft);
-      border-bottom: 1px solid var(--line-soft);
+      border-top: 1px solid rgba(196, 210, 226, 0.08);
+      border-bottom: 1px solid rgba(196, 210, 226, 0.08);
 
       text-align: center;
     }
@@ -688,7 +683,7 @@
         clamp(20px, 5vw, 58px)
         max(28px, env(safe-area-inset-bottom));
 
-      background: var(--blue-black);
+      background: #000816;
       color: rgba(166, 186, 210, 0.62);
 
       text-align: center;
@@ -875,7 +870,6 @@
         font-size: clamp(1.16rem, 5.2vw, 1.5rem);
       }
 
-      .intro-copy,
       .inquiry-copy,
       .cowboy-copy {
         font-size: 1rem;
@@ -1046,12 +1040,6 @@
             Thomas Osbert Mordaunt
           </footer>
         </blockquote>
-
-        <p class="intro-copy">
-          A new chapter in the sporting life of the Holy City, welcoming
-          riders, patrons, horsemen, and guests into the enduring fellowship
-          of polo.
-        </p>
       </div>
     </section>
 
