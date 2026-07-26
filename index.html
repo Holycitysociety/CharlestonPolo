@@ -348,7 +348,7 @@
       overflow: hidden;
 
       background: var(--blue-black);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--line-soft);
     }
 
     .hero-image {
@@ -361,6 +361,9 @@
 
     /* ---------------------------------
        Introduction
+
+       Deep navy at both ends, rising into
+       the brighter blue through the center.
     --------------------------------- */
 
     .intro {
@@ -372,9 +375,13 @@
       background:
         linear-gradient(
           180deg,
-          #244b7e 0%,
-          #173d70 48%,
-          #0b2852 100%
+          #061b3c 0%,
+          #0b2852 16%,
+          #173d70 33%,
+          #244b7e 50%,
+          #173d70 67%,
+          #0b2852 84%,
+          #061b3c 100%
         );
 
       text-align: center;
@@ -472,8 +479,8 @@
       background:
         linear-gradient(
           180deg,
-          #0b2852 0%,
-          #061b3c 58%,
+          #061b3c 0%,
+          #031632 58%,
           #00102f 100%
         );
 
@@ -580,11 +587,6 @@
 
       isolation: isolate;
     }
-
-    /*
-      The Cowboy image behaves exactly like the main hero:
-      full width, natural height, and no cropping.
-    */
 
     .cowboy-hero-image {
       display: block;
@@ -937,11 +939,6 @@
       .button {
         width: 100%;
       }
-
-      /*
-        The full Cowboy image remains visible on mobile.
-        The typography compresses to fit its shallower height.
-      */
 
       .cowboy-hero-inner {
         bottom: clamp(8px, 3.5vw, 20px);
