@@ -26,25 +26,42 @@
   <style>
     :root {
       /*
-        Holy City Society blue stack
+        Palette drawn from hero.jpg and cowboyfooter.jpg.
+
+        Dark horse / night-field values:
+        #00102f
+        #071d42
+        #10315f
+
+        Mid-blue engraving values:
+        #244b7e
+        #4f76a5
+        #7697bd
+
+        Charleston sky values:
+        #a6bad2
+        #c4d2e2
+        #d7e0ea
       */
 
-      --navy-black: #031225;
-      --navy-deep: #07192d;
-      --navy: #0d223b;
-      --navy-panel: #122942;
-      --navy-soft: #183652;
+      --blue-black: #00102f;
+      --blue-deepest: #061b3c;
+      --blue-deep: #0b2852;
+      --blue: #173d70;
+      --blue-panel: #244b7e;
+      --blue-mid: #4f76a5;
 
-      --ice-white: #f1f5f8;
-      --ice-blue: #d3e1ec;
-      --mist-blue: #a9bfd2;
-      --muted-blue: #7f9ab2;
+      --blue-muted: #7697bd;
+      --blue-mist: #a6bad2;
+      --blue-pale: #c4d2e2;
+      --blue-cloud: #d7e0ea;
+      --white-blue: #eef3f7;
 
-      --gold: #caa24d;
-      --gold-light: #ddc078;
+      --gold: #c69a3c;
+      --gold-light: #dfbf72;
 
-      --line: rgba(211, 225, 236, 0.16);
-      --line-strong: rgba(211, 225, 236, 0.26);
+      --line: rgba(196, 210, 226, 0.18);
+      --line-soft: rgba(196, 210, 226, 0.1);
 
       --page-width: 1120px;
       --copy-width: 760px;
@@ -56,15 +73,15 @@
 
     html {
       scroll-behavior: smooth;
-      background: var(--navy-black);
+      background: var(--blue-black);
     }
 
     body {
       margin: 0;
       overflow-x: hidden;
 
-      background: var(--navy-deep);
-      color: var(--ice-blue);
+      background: var(--blue-deepest);
+      color: var(--blue-pale);
 
       font-family:
         "Cormorant Garamond",
@@ -97,8 +114,8 @@
     }
 
     ::selection {
-      background: var(--mist-blue);
-      color: var(--navy-black);
+      background: var(--blue-mist);
+      color: var(--blue-black);
     }
 
     /* ---------------------------------
@@ -122,9 +139,9 @@
       align-items: center;
       justify-content: space-between;
 
-      background: rgba(3, 18, 37, 0.25);
+      background: rgba(0, 16, 47, 0.25);
 
-      border-bottom: 1px solid rgba(211, 225, 236, 0.08);
+      border-bottom: 1px solid rgba(196, 210, 226, 0.09);
 
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
@@ -142,10 +159,10 @@
       padding-top: 8px;
       padding-bottom: 8px;
 
-      background: rgba(3, 18, 37, 0.25);
+      background: rgba(0, 16, 47, 0.25);
 
       box-shadow:
-        0 10px 28px rgba(0, 0, 0, 0.14);
+        0 10px 28px rgba(0, 8, 28, 0.16);
     }
 
     .header-identity {
@@ -168,7 +185,7 @@
       flex: 0 0 auto;
 
       filter:
-        drop-shadow(0 3px 9px rgba(0, 0, 0, 0.45));
+        drop-shadow(0 3px 9px rgba(0, 8, 25, 0.5));
 
       transition:
         width 180ms ease;
@@ -195,13 +212,13 @@
       white-space: nowrap;
 
       text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.6);
+        0 2px 8px rgba(0, 8, 25, 0.66);
     }
 
     .header-wordmark-sub {
       margin-top: 5px;
 
-      color: var(--mist-blue);
+      color: var(--blue-pale);
 
       font-size: 0.58rem;
       font-style: italic;
@@ -210,7 +227,7 @@
       text-transform: uppercase;
 
       text-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.5);
+        0 2px 8px rgba(0, 8, 25, 0.56);
     }
 
     .site-nav {
@@ -231,7 +248,7 @@
       letter-spacing: 0.15em;
       line-height: 1.2;
       text-decoration: none;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+      text-shadow: 0 2px 8px rgba(0, 8, 25, 0.68);
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -304,7 +321,7 @@
       background: currentColor;
 
       box-shadow:
-        0 1px 4px rgba(0, 0, 0, 0.6);
+        0 1px 4px rgba(0, 8, 25, 0.65);
 
       transform-origin: center;
 
@@ -350,13 +367,13 @@
       width: 100%;
       overflow: hidden;
 
-      background: var(--navy-black);
+      background: var(--blue-black);
       border-bottom: 1px solid var(--line);
     }
 
     /*
-      Full landscape image remains visible.
-      No crop and no overlay.
+      The image controls the hero height and remains
+      completely visible at every screen width.
     */
 
     .hero-image {
@@ -380,8 +397,9 @@
       background:
         linear-gradient(
           180deg,
-          var(--navy-panel) 0%,
-          var(--navy) 100%
+          #244b7e 0%,
+          #173d70 48%,
+          #0b2852 100%
         );
 
       text-align: center;
@@ -395,7 +413,7 @@
     .section-kicker {
       margin: 0 0 clamp(14px, 2vw, 20px);
 
-      color: var(--muted-blue);
+      color: var(--blue-mist);
 
       font-size: clamp(0.58rem, 0.85vw, 0.7rem);
       font-weight: 600;
@@ -425,7 +443,7 @@
         auto
         0;
 
-      color: var(--ice-white);
+      color: var(--white-blue);
 
       font-size: clamp(1.25rem, 2.45vw, 1.95rem);
       font-style: italic;
@@ -443,7 +461,7 @@
 
       margin-top: 14px;
 
-      color: var(--muted-blue);
+      color: var(--blue-mist);
 
       font-size: clamp(0.52rem, 0.7vw, 0.64rem);
       font-style: normal;
@@ -460,7 +478,7 @@
         auto
         0;
 
-      color: var(--mist-blue);
+      color: var(--blue-cloud);
 
       font-size: clamp(1rem, 1.65vw, 1.2rem);
       line-height: 1.58;
@@ -479,8 +497,9 @@
       background:
         linear-gradient(
           180deg,
-          var(--navy) 0%,
-          var(--navy-deep) 100%
+          #0b2852 0%,
+          #071f45 52%,
+          #061b3c 100%
         );
 
       text-align: center;
@@ -494,7 +513,7 @@
     .participation-kicker {
       margin: 0 0 14px;
 
-      color: var(--muted-blue);
+      color: var(--blue-muted);
 
       font-size: clamp(0.56rem, 0.8vw, 0.66rem);
       font-weight: 600;
@@ -506,7 +525,7 @@
     .participation-title {
       margin: 0 0 22px;
 
-      color: var(--ice-white);
+      color: var(--white-blue);
 
       font-size: clamp(1.55rem, 3.1vw, 2.5rem);
       font-weight: 400;
@@ -518,7 +537,7 @@
       max-width: 640px;
       margin: 0 auto;
 
-      color: var(--mist-blue);
+      color: var(--blue-pale);
 
       font-size: clamp(1.02rem, 1.8vw, 1.25rem);
       font-style: italic;
@@ -537,8 +556,9 @@
       background:
         linear-gradient(
           180deg,
-          var(--navy-deep) 0%,
-          var(--navy-black) 100%
+          #061b3c 0%,
+          #031632 55%,
+          #00102f 100%
         );
 
       text-align: center;
@@ -552,7 +572,7 @@
     .inquiry-title {
       margin: 0 0 20px;
 
-      color: var(--ice-white);
+      color: var(--white-blue);
 
       font-size: clamp(1.7rem, 3.5vw, 2.75rem);
       font-weight: 400;
@@ -568,7 +588,7 @@
         auto
         32px;
 
-      color: var(--mist-blue);
+      color: var(--blue-pale);
 
       font-size: clamp(1rem, 1.65vw, 1.18rem);
       line-height: 1.58;
@@ -592,9 +612,9 @@
       align-items: center;
       justify-content: center;
 
-      border: 1px solid var(--ice-blue);
-      background: var(--ice-blue);
-      color: var(--navy-deep);
+      border: 1px solid var(--blue-cloud);
+      background: var(--blue-cloud);
+      color: var(--blue-deepest);
 
       font-size: 0.66rem;
       font-weight: 600;
@@ -605,26 +625,28 @@
 
       transition:
         background 180ms ease,
+        border-color 180ms ease,
         color 180ms ease,
         transform 180ms ease;
     }
 
     .button:hover,
     .button:focus-visible {
-      background: var(--ice-white);
-      color: var(--navy-black);
+      background: var(--white-blue);
+      border-color: var(--white-blue);
+      color: var(--blue-black);
       transform: translateY(-2px);
     }
 
     .button-outline {
       background: transparent;
-      color: var(--ice-blue);
+      color: var(--blue-cloud);
     }
 
     .button-outline:hover,
     .button-outline:focus-visible {
-      background: var(--ice-blue);
-      color: var(--navy-deep);
+      background: var(--blue-cloud);
+      color: var(--blue-deepest);
     }
 
     /* ---------------------------------
@@ -642,8 +664,9 @@
       background:
         linear-gradient(
           180deg,
-          var(--navy-panel) 0%,
-          var(--navy-deep) 100%
+          #173d70 0%,
+          #0b2852 58%,
+          #061b3c 100%
         );
 
       border-top: 1px solid var(--line);
@@ -665,7 +688,7 @@
     .cowboy-kicker {
       margin: 0 0 14px;
 
-      color: var(--muted-blue);
+      color: var(--blue-mist);
 
       font-size: clamp(0.56rem, 0.8vw, 0.66rem);
       font-weight: 600;
@@ -677,7 +700,7 @@
     .cowboy-title {
       margin: 0 0 20px;
 
-      color: var(--ice-white);
+      color: var(--white-blue);
 
       font-size: clamp(1.8rem, 3.8vw, 3rem);
       font-weight: 400;
@@ -694,7 +717,7 @@
         auto
         28px;
 
-      color: var(--mist-blue);
+      color: var(--blue-cloud);
 
       font-size: clamp(1rem, 1.65vw, 1.2rem);
       font-style: italic;
@@ -709,8 +732,8 @@
       align-items: center;
       gap: 11px;
 
-      border-bottom: 1px solid var(--ice-blue);
-      color: var(--ice-white);
+      border-bottom: 1px solid var(--blue-cloud);
+      color: var(--white-blue);
 
       font-size: 0.67rem;
       font-weight: 600;
@@ -734,7 +757,7 @@
 
     .cowboy-link:hover,
     .cowboy-link:focus-visible {
-      color: var(--mist-blue);
+      color: var(--blue-mist);
       gap: 16px;
     }
 
@@ -744,7 +767,8 @@
       width: 100%;
       overflow: hidden;
 
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--line-soft);
+      background: var(--blue-black);
       text-decoration: none;
     }
 
@@ -762,7 +786,7 @@
 
     .cowboy-footer-link:hover .cowboy-footer-image,
     .cowboy-footer-link:focus-visible .cowboy-footer-image {
-      filter: brightness(1.04);
+      filter: brightness(1.035);
       transform: scale(1.004);
     }
 
@@ -776,8 +800,8 @@
         clamp(20px, 5vw, 58px)
         max(28px, env(safe-area-inset-bottom));
 
-      background: var(--navy-black);
-      color: rgba(169, 191, 210, 0.58);
+      background: var(--blue-black);
+      color: rgba(166, 186, 210, 0.62);
 
       text-align: center;
     }
@@ -891,14 +915,14 @@
         background:
           linear-gradient(
             180deg,
-            rgba(3, 18, 37, 0.995),
-            rgba(7, 25, 45, 0.995)
+            rgba(0, 16, 47, 0.995),
+            rgba(6, 27, 60, 0.995)
           );
 
         border-left: 1px solid var(--line);
 
         box-shadow:
-          -22px 0 62px rgba(0, 0, 0, 0.38);
+          -22px 0 62px rgba(0, 8, 28, 0.42);
 
         opacity: 0;
         pointer-events: none;
@@ -940,7 +964,7 @@
 
         display: block;
 
-        background: rgba(1, 8, 18, 0.64);
+        background: rgba(0, 7, 24, 0.68);
 
         opacity: 0;
         pointer-events: none;
