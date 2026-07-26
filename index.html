@@ -213,7 +213,6 @@
 
     .site-nav {
       display: flex;
-
       align-items: center;
       justify-content: flex-end;
       gap: clamp(18px, 2.5vw, 34px);
@@ -339,7 +338,7 @@
     }
 
     /* ---------------------------------
-       Hero
+       Main hero
     --------------------------------- */
 
     .hero {
@@ -513,7 +512,6 @@
 
     .button-row {
       display: flex;
-
       align-items: center;
       flex-wrap: wrap;
       justify-content: center;
@@ -567,24 +565,16 @@
     }
 
     /* ---------------------------------
-       Cowboy Polo image hero
+       Cowboy Polo full-width image hero
     --------------------------------- */
 
     .cowboy-hero {
       position: relative;
 
-      display: flex;
-      min-height: clamp(520px, 68vw, 860px);
+      width: 100%;
       overflow: hidden;
 
-      align-items: center;
-      justify-content: center;
-
-      background:
-        url("cowboyfooter.jpg")
-        center center / cover
-        no-repeat;
-
+      background: var(--blue-black);
       border-top: 1px solid var(--line-soft);
       border-bottom: 1px solid var(--line-soft);
 
@@ -592,73 +582,81 @@
     }
 
     /*
-      Desktop parallax effect. The image remains fixed while the
-      content moves across it during scrolling.
+      The Cowboy image behaves exactly like the main hero:
+      full width, natural height, and no cropping.
     */
 
-    @media (min-width: 901px) {
-      .cowboy-hero {
-        background-attachment: fixed;
-      }
+    .cowboy-hero-image {
+      display: block;
+
+      width: 100%;
+      height: auto;
+      max-width: none;
     }
 
-    .cowboy-hero::before {
+    .cowboy-hero-shade {
       position: absolute;
-      z-index: -1;
+      z-index: 1;
       inset: 0;
 
       background:
         linear-gradient(
           180deg,
-          rgba(0, 16, 47, 0.18) 0%,
-          rgba(0, 16, 47, 0.34) 45%,
-          rgba(0, 16, 47, 0.68) 100%
+          rgba(0, 16, 47, 0.08) 0%,
+          rgba(0, 16, 47, 0.12) 40%,
+          rgba(0, 16, 47, 0.5) 100%
         ),
         linear-gradient(
           90deg,
-          rgba(0, 16, 47, 0.48) 0%,
-          rgba(0, 16, 47, 0.12) 50%,
-          rgba(0, 16, 47, 0.48) 100%
+          rgba(0, 16, 47, 0.28) 0%,
+          transparent 34%,
+          transparent 66%,
+          rgba(0, 16, 47, 0.25) 100%
         );
 
-      content: "";
+      pointer-events: none;
     }
 
     .cowboy-hero-inner {
-      width: min(92%, 760px);
+      position: absolute;
+      z-index: 2;
+
+      right: 0;
+      bottom: clamp(28px, 7vw, 104px);
+      left: 0;
+
+      width: min(90%, 760px);
       margin: 0 auto;
-      padding:
-        clamp(82px, 10vw, 140px)
-        clamp(18px, 4vw, 44px);
+      padding: 0 clamp(16px, 4vw, 44px);
 
       text-align: center;
     }
 
     .cowboy-kicker {
-      margin: 0 0 16px;
+      margin: 0 0 clamp(8px, 1.2vw, 15px);
 
       color: var(--blue-cloud);
 
-      font-size: clamp(0.58rem, 0.85vw, 0.68rem);
+      font-size: clamp(0.55rem, 0.85vw, 0.68rem);
       font-weight: 600;
       letter-spacing: 0.31em;
       line-height: 1.2;
       text-shadow:
-        0 2px 10px rgba(0, 8, 25, 0.85);
+        0 2px 10px rgba(0, 8, 25, 0.9);
       text-transform: uppercase;
     }
 
     .cowboy-title {
-      margin: 0 0 24px;
+      margin: 0 0 clamp(10px, 1.8vw, 22px);
 
       color: var(--white-blue);
 
-      font-size: clamp(2.3rem, 6vw, 4.8rem);
+      font-size: clamp(2rem, 5.7vw, 4.7rem);
       font-weight: 400;
       letter-spacing: 0.08em;
       line-height: 0.95;
       text-shadow:
-        0 3px 16px rgba(0, 8, 25, 0.88);
+        0 3px 16px rgba(0, 8, 25, 0.92);
       text-transform: uppercase;
     }
 
@@ -668,38 +666,38 @@
       margin:
         0
         auto
-        34px;
+        clamp(15px, 2.5vw, 30px);
 
       color: var(--white-blue);
 
-      font-size: clamp(1.08rem, 2vw, 1.38rem);
+      font-size: clamp(0.95rem, 1.8vw, 1.3rem);
       font-style: italic;
-      line-height: 1.5;
+      line-height: 1.45;
       text-shadow:
-        0 2px 12px rgba(0, 8, 25, 0.9);
+        0 2px 12px rgba(0, 8, 25, 0.94);
     }
 
     .cowboy-link {
       display: inline-flex;
 
-      min-height: 46px;
-      padding: 12px 26px;
+      min-height: 43px;
+      padding: 11px 24px;
 
       align-items: center;
       justify-content: center;
       gap: 11px;
 
-      border: 1px solid rgba(238, 243, 247, 0.76);
-      background: rgba(0, 16, 47, 0.28);
+      border: 1px solid rgba(238, 243, 247, 0.78);
+      background: rgba(0, 16, 47, 0.3);
       color: var(--white-blue);
 
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.19em;
       line-height: 1;
       text-decoration: none;
       text-shadow:
-        0 2px 8px rgba(0, 8, 25, 0.8);
+        0 2px 8px rgba(0, 8, 25, 0.84);
       text-transform: uppercase;
 
       backdrop-filter: blur(4px);
@@ -715,7 +713,7 @@
     .cowboy-link::after {
       content: "→";
 
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-weight: 400;
       line-height: 1;
     }
@@ -940,26 +938,41 @@
         width: 100%;
       }
 
-      .cowboy-hero {
-        min-height: 590px;
-
-        background-position: center center;
-        background-attachment: scroll;
-      }
+      /*
+        The full Cowboy image remains visible on mobile.
+        The typography compresses to fit its shallower height.
+      */
 
       .cowboy-hero-inner {
-        width: 94%;
-        padding:
-          90px
-          18px;
+        bottom: clamp(8px, 3.5vw, 20px);
+        width: 96%;
+        padding: 0 10px;
+      }
+
+      .cowboy-kicker {
+        margin-bottom: 5px;
+        font-size: clamp(0.4rem, 1.8vw, 0.54rem);
+        letter-spacing: 0.22em;
       }
 
       .cowboy-title {
-        font-size: clamp(2rem, 12vw, 3rem);
+        margin-bottom: 6px;
+        font-size: clamp(1.2rem, 7vw, 2rem);
       }
 
       .cowboy-copy {
-        font-size: 1.08rem;
+        max-width: 92%;
+        margin-bottom: 9px;
+
+        font-size: clamp(0.62rem, 3.1vw, 0.9rem);
+        line-height: 1.25;
+      }
+
+      .cowboy-link {
+        min-height: 30px;
+        padding: 7px 14px;
+
+        font-size: clamp(0.45rem, 1.8vw, 0.58rem);
       }
 
       .footer-inner {
@@ -1003,12 +1016,25 @@
         letter-spacing: 0.012em;
       }
 
-      .cowboy-hero {
-        min-height: 540px;
+      .cowboy-hero-inner {
+        bottom: 5px;
+      }
+
+      .cowboy-kicker {
+        display: none;
       }
 
       .cowboy-title {
-        font-size: 2rem;
+        font-size: clamp(1rem, 6.5vw, 1.5rem);
+      }
+
+      .cowboy-copy {
+        font-size: clamp(0.54rem, 2.8vw, 0.72rem);
+      }
+
+      .cowboy-link {
+        min-height: 27px;
+        padding: 6px 11px;
       }
     }
 
@@ -1021,10 +1047,6 @@
       *::before,
       *::after {
         transition-duration: 0.01ms !important;
-      }
-
-      .cowboy-hero {
-        background-attachment: scroll;
       }
     }
   </style>
@@ -1170,6 +1192,17 @@
       class="cowboy-hero"
       aria-label="Cowboy Polo Circuit"
     >
+      <img
+        src="cowboyfooter.jpg"
+        class="cowboy-hero-image"
+        alt="Cowboy Polo players under stadium lights"
+      />
+
+      <div
+        class="cowboy-hero-shade"
+        aria-hidden="true"
+      ></div>
+
       <div class="cowboy-hero-inner">
         <p class="cowboy-kicker">
           The Development Circuit
