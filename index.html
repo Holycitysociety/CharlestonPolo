@@ -270,7 +270,7 @@
     }
 
     /* ---------------------------------
-       Fine-line mobile hamburger
+       Mobile menu button
     --------------------------------- */
 
     .menu-toggle {
@@ -349,7 +349,7 @@
     }
 
     /* ---------------------------------
-       Main hero
+       Hero
     --------------------------------- */
 
     .hero {
@@ -574,14 +574,14 @@
     }
 
     /* ---------------------------------
-       Cowboy Polo history and revival
+       Cowboy Polo Circuit
     --------------------------------- */
 
     .cowboy-gateway {
       padding:
-        clamp(76px, 9vw, 120px)
-        clamp(20px, 5vw, 58px)
-        clamp(84px, 10vw, 134px);
+        clamp(72px, 9vw, 118px)
+        clamp(18px, 5vw, 58px)
+        clamp(86px, 10vw, 136px);
 
       background:
         linear-gradient(
@@ -593,24 +593,70 @@
         );
 
       border: 0;
+    }
+
+    .cowboy-card {
+      position: relative;
+
+      width: min(100%, 760px);
+      margin: 0 auto;
+      overflow: hidden;
+
+      padding:
+        clamp(44px, 6vw, 68px)
+        clamp(24px, 6vw, 62px);
+
+      background:
+        linear-gradient(
+          150deg,
+          rgba(27, 63, 104, 0.82) 0%,
+          rgba(12, 39, 78, 0.9) 42%,
+          rgba(3, 21, 47, 0.96) 100%
+        );
+
+      border: 1px solid rgba(193, 208, 223, 0.15);
+
+      box-shadow:
+        0 28px 76px rgba(0, 4, 15, 0.4),
+        inset 0 1px 0 rgba(238, 243, 247, 0.06);
 
       text-align: center;
     }
 
-    .cowboy-gateway-inner {
-      width: min(100%, 760px);
-      margin: 0 auto;
+    .cowboy-card::before {
+      position: absolute;
+      top: -120px;
+      left: 50%;
+
+      width: 420px;
+      height: 250px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(113, 139, 167, 0.16) 0%,
+          rgba(113, 139, 167, 0) 70%
+        );
+
+      content: "";
+      pointer-events: none;
+      transform: translateX(-50%);
+    }
+
+    .cowboy-card-content {
+      position: relative;
+      z-index: 1;
     }
 
     .cowboy-kicker {
-      margin: 0 0 15px;
+      margin: 0 0 16px;
 
-      color: var(--blue-muted);
+      color: var(--blue-mist);
 
       font-size: clamp(0.56rem, 0.82vw, 0.67rem);
       font-weight: 600;
-      letter-spacing: 0.31em;
-      line-height: 1.2;
+      letter-spacing: 0.29em;
+      line-height: 1.3;
       text-transform: uppercase;
     }
 
@@ -619,38 +665,25 @@
 
       color: var(--white-blue);
 
-      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      font-size: clamp(1.85rem, 4vw, 3.15rem);
       font-weight: 400;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       line-height: 1;
       text-transform: uppercase;
     }
 
-    .cowboy-history {
-      max-width: 660px;
-      margin: 0 auto 34px;
-    }
-
     .cowboy-copy {
-      margin: 0;
+      max-width: 610px;
 
-      color: var(--blue-pale);
+      margin:
+        0
+        auto
+        34px;
 
-      font-size: clamp(1rem, 1.7vw, 1.22rem);
-      line-height: 1.58;
-    }
-
-    .cowboy-copy + .cowboy-copy {
-      margin-top: 22px;
-    }
-
-    .cowboy-copy-origin {
       color: var(--blue-cloud);
-    }
 
-    .cowboy-copy-revival {
-      color: var(--blue-pale);
-      font-style: italic;
+      font-size: clamp(1rem, 1.7vw, 1.2rem);
+      line-height: 1.6;
     }
 
     .cowboy-link {
@@ -927,11 +960,7 @@
       }
 
       .cowboy-title {
-        font-size: clamp(1.7rem, 9vw, 2.4rem);
-      }
-
-      .cowboy-history {
-        max-width: 620px;
+        font-size: clamp(1.55rem, 8vw, 2.3rem);
       }
 
       .cowboy-link {
@@ -984,6 +1013,17 @@
       .button {
         padding-right: 20px;
         padding-left: 20px;
+      }
+
+      .cowboy-card {
+        padding:
+          42px
+          20px;
+      }
+
+      .cowboy-title {
+        font-size: clamp(1.36rem, 7vw, 1.9rem);
+        letter-spacing: 0.045em;
       }
     }
 
@@ -1131,41 +1171,36 @@
 
     <section
       class="cowboy-gateway"
-      aria-label="Cowboy Polo history and circuit"
+      aria-label="Cowboy Polo Circuit"
     >
-      <div class="cowboy-gateway-inner">
-        <p class="cowboy-kicker">
-          Palmetto Polo · Founded 1952
-        </p>
-
-        <h2 class="cowboy-title">
-          Cowboy Polo
-        </h2>
-
-        <div class="cowboy-history">
-          <p class="cowboy-copy cowboy-copy-origin">
-            Born in New Smyrna Beach, Florida, in 1952 as Palmetto Polo,
-            the game adapted polo for Western riders through arena play,
-            Western tack, a larger ball, and palm-handled mallets. Renamed
-            Cowboy Polo in 1959, it spread west through mounted posses and
-            local riding clubs.
+      <article class="cowboy-card">
+        <div class="cowboy-card-content">
+          <p class="cowboy-kicker">
+            Charleston Polo · Development Circuit
           </p>
 
-          <p class="cowboy-copy cowboy-copy-revival">
-            As its 75th anniversary approaches in 2027, the Cowboy Polo
-            Circuit is reviving that Southern-born tradition—not as a museum
-            piece, but as a practical American pathway for new riders,
-            adaptable horses, and local competition.
+          <h2 class="cowboy-title">
+            Cowboy Polo Circuit
+          </h2>
+
+          <p class="cowboy-copy">
+            Born from the Southern tradition of Palmetto Polo, the Cowboy
+            Polo Circuit is Charleston Polo’s development pathway for new
+            riders, adaptable horses, and local competition. As the game
+            approaches its 75th anniversary in 2027, Charleston Polo is
+            helping revive this distinctly American branch of the sport—
+            connecting its history to a practical new route into the King
+            of Games.
           </p>
+
+          <a
+            class="cowboy-link"
+            href="https://cowboypolo.com"
+          >
+            Explore Cowboy Polo
+          </a>
         </div>
-
-        <a
-          class="cowboy-link"
-          href="https://cowboypolo.com"
-        >
-          Explore Cowboy Polo
-        </a>
-      </div>
+      </article>
     </section>
   </main>
 
